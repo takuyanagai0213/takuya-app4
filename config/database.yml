@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: takuya-app4_production
   username: takuya-app4
   password: <%= ENV['TAKUYA-APP4_DATABASE_PASSWORD'] %>
