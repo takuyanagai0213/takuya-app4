@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = current_user.posts.find_by(id: params[:id])
   end
 
   def edit
