@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    user = User.find_by(email: params[:session][:email].downcase)
      email = params[:session][:email].downcase
     password = params[:session][:password]
     if login(email, password)
       flash[:success] = 'ログインに成功しました。'
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to @user
     else
       flash.now[:danger] = 'ログインに失敗しました。'
@@ -15,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    log_out if logged_in?
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
