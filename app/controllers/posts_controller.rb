@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   
+  def show
+    @post = Post.find(params[:id])
+  end
+  
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -17,24 +21,32 @@ class PostsController < ApplicationController
     end
   end
 
+
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "更新しました。"
+      redirect_to @post
+    else
+      flash.now[:danger] = "更新できませんでした。"
+    end
+  end
+  
   def destroy
     @post.destroy
     flash[:success] = '投稿を削除しました。'
     redirect_back(fallback_location: root_url)
   end
-
-  def show
-    @post = current_user.posts.find_by(id: params[:id])
-  end
-
-  def edit
-  end
-
-  def update
-  end
+  
+  private
   
   def post_params
-    params.require(:post).permit(:content, :picture)
+    params.require(:post).permit(:content, :detail, :picture)
   end
   
   def correct_user

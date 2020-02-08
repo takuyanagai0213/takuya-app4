@@ -14,12 +14,6 @@
         <div>
           <%= link_to '釣果詳細', post_path(post) %>
         </div>
-        
-        <div>
-          <% if current_user == post.user %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-        </div>
       </div>
       
     </li>
