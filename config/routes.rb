@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :posts, except: [:index]
+  
+  resources :picture_detail, only: [:new]
 
 end
