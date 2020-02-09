@@ -5,6 +5,9 @@
   <div class="card-body">
     <p><%= @post.detail %></p>
   </div>
+  <div class="">
+    <%= image_tag @post.picture.url if @post.picture? %>
+  </div>
 </div>
 <div class="form-group">
 <% if current_user?(@post.user) %>
