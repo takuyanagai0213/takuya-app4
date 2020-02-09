@@ -34,6 +34,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash.now[:danger] = "更新できませんでした。"
+      redirect_to edit_post_path
     end
   end
   

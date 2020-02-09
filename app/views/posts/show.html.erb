@@ -12,7 +12,7 @@
 <div class="form-group">
 <% if current_user?(@post.user) %>
   <div class="form-group">
-    <%#= link_to '詳細画像を追加する', new_picture_detail_path, class: 'btn btn-success' %>
+    <%= link_to '詳細画像を追加する', new_picture_detail_path, class: 'btn btn-success' %>
     <%= link_to '釣果を編集する', edit_post_path(@post), class: 'btn btn-success' %>
   </div>
   <div class="form-group">
