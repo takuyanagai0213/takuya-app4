@@ -1,0 +1,7 @@
+<%= form_with(model: @picture, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.file_field :imgae1, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+  <%= f.submit '投稿' %>
+
+<% end %>
