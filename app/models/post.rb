@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :detail, presence: true, length: { maximum: 300 }
   validate :picture_size
   belongs_to :picture_detail
+  has_many :comments
   
   private
   

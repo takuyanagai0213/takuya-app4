@@ -9,15 +9,43 @@
     <%= image_tag @post.picture.url if @post.picture? %>
   </div>
 </div>
+<div class="col-sm-6">
+  
+  <h2>コメント一覧</h2>
+  <% @comments.each do |comment| %>
+  <div class="card">
+    <%= comment.content %>
+  </div>
+  
+  <div class="text-right">
+    <img class="mr-2 rounded" src="<%= gravatar_url(@post.user, { size: 30 }) %>" alt="">
+    <%= link_to @post.user.name, user_path(@post.user) %> <span class="text-muted small">投稿日 <%= @post.created_at %></span>
+  </div>
+  <% end %>
+  
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control", rows: 5 %>
+      </div>
+        <%= f.submit 'コメントをする', class: "btn btn-primary" %>
+    <% end %>
+</div>
+
+</div>
 <div class="form-group">
-<% if current_user?(@post.user) %>
-  <div class="form-group">
-    <%= link_to '詳細画像を追加する', new_picture_detail_path, class: 'btn btn-success' %>
-    <%= link_to '釣果を編集する', edit_post_path(@post), class: 'btn btn-success' %>
-  </div>
-  <div class="form-group">
-    <%#= link_to "Delete",post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-  </div>
-<% end %>
+  <% if current_user?(@post.user) %>
+    <div class="form-group">
+      <%= link_to '詳細画像を追加する', new_picture_detail_path, class: 'btn btn-success' %>
+      <%= link_to '釣果を編集する', edit_post_path(@post), class: 'btn btn-success' %>
+    </div>
+    
+    <div class="form-group">
+      <%#= link_to "Delete",post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+    </div>
+  <% end %>
+</div>
 
-
+<div class="col-sm-4">
+  <%= link_to "ホームへ戻る", root_url, class: "btn btn-primary" %>
+</div>

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'picture_details/new'
-  get 'picture_details/create'
-  get 'picture_detail/new'
-  get 'picture_detail/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'toppages#index'
 
@@ -13,8 +9,8 @@ Rails.application.routes.draw do
     
   resources :users
   
-  resources :posts, except: [:index]
-  
+  resources :posts, except: [:index] do
+    resources :comments, only: [:create]
+  end
   resources :picture_details, only: [:index, :new, :create]
-
 end
