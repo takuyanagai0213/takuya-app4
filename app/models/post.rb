@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 30 }
   validates :detail, presence: true, length: { maximum: 300 }
   validate :picture_size
-  belongs_to :picture_detail
-  has_many :comments
+  #belongs_to :picture_detail
+  has_many :comments, dependent: :destroy
   
   private
   
