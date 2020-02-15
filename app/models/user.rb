@@ -9,6 +9,24 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments 
   
+  has_many :bookmarks
+  has_many :addbookmark, through: :bookmarks, source: :post
+  has_many :reverses_of_bookmark, class_name: 'Bookmark', foreign_key: 'user_id'
+  has_many :bookmarker, through: :reverses_of_bookmark, source: :user
+  
+  def bookmark(post)
+    self.bookmarks.find_or_create_by(post_id: post.id)
+  end
+  
+  def unbookmark(post)
+    bookmark = self.bookmarks.find_by(post_id: post.id)
+    bookmark.destroy if favoite
+  end
+  
+  def bookmark_add?(post)
+    self.addbookmark.include?(post)
+  end
+  
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

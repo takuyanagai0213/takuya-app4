@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   validate :picture_size
   #belongs_to :picture_detail
   has_many :comments, dependent: :destroy
+  has_many :bookmark
   
   private
   
