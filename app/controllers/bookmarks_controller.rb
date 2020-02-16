@@ -4,13 +4,13 @@ class BookmarksController < ApplicationController
     post =Post.find(params[:post_id])
     current_user.bookmark(post)
     flash[:success] = 'ブックマークしました。'
-    redirect_to root_url
+    redirect_to post_path(post)
   end
 
   def destroy
     post = Post.find(params[:post_id])
     current_user.unbookmark(post)
     flash[:success] = 'ブックマークを解除しました。'
-    redirect_to root_url
+    redirect_to post_path(post)
   end
 end

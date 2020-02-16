@@ -9,10 +9,16 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
     
-  resources :users
+  resources :users do
+    member do 
+      get :bookmarks
+    end
+  end
   
   resources :posts, except: [:index] do
     resources :comments, only: [:create]
   end
   resources :picture_details, only: [:index, :new, :create]
+  
+  resources :bookmarks, only: [:create, :destroy]
 end

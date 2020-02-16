@@ -10,6 +10,8 @@
   <div class="picture">
     <%= image_tag @post.picture.url if @post.picture? %>
   </div>
+  
+  <%= render 'bookmarks/bookmarks_button', post: @post %>
 </div>
 
 <div class="edit-form">

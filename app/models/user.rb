@@ -20,7 +20,7 @@ class User < ApplicationRecord
   
   def unbookmark(post)
     bookmark = self.bookmarks.find_by(post_id: post.id)
-    bookmark.destroy if favoite
+    bookmark.destroy if bookmark
   end
   
   def bookmark_add?(post)
