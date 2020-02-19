@@ -81,6 +81,10 @@ GEM
     crass (1.0.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     dry-inflector (0.2.0)
     erubi (1.9.0)
     excon (0.72.0)
@@ -232,7 +236,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (3.2.2)
+    fog-vsphere (3.2.3)
       fog-core
       rbvmomi (>= 1.9, < 3)
     fog-xenserver (1.0.0)
@@ -409,6 +413,7 @@ DEPENDENCIES
   carrierwave (= 1.2.2)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dotenv-rails
   fog (= 1.42)
   fog-aws
   jbuilder (~> 2.5)
