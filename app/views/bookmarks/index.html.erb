@@ -1,0 +1,27 @@
+
+  <% @bookmarks.each do |post| %>
+    <li class="card">
+      <div class="card-header">
+        <h4><%= link_to "#{post.content}", post_path(post) %></h4>
+      </div>
+      
+      <div class="card-body">
+        <div class="">
+          <%= image_tag post.picture.url if post.picture? %>
+        </div>
+        
+        <div class="text-right">
+          <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+        </div>
+      </div>
+
+        <% if current_user?(post.user) %>
+          <div class="form-group text-right">
+            <%= link_to "Delete",post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          </div>
+        <% end %>
+    </li>
+  <% end %>
+  <%#= paginate @bookmarks %>
+        

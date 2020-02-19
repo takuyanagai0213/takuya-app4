@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   end
   resources :picture_details, only: [:index, :new, :create]
   
-  resources :bookmarks, only: [:create, :destroy]
+  resources :bookmarks, only: [:index, :create, :destroy]
 end
