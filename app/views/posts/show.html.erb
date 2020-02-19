@@ -33,10 +33,12 @@
       <div class="card">
         <%= comment.content %>
       </div>
-      
+      <% if current_user = comment.user %>
+        <%= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
       <div class="text-right">
-        <img class="mr-2 rounded" src="<%= gravatar_url(@post.user, { size: 30 }) %>" alt="">
-        <%= link_to @post.user.name, user_path(@post.user) %> <span class="text-muted small">投稿日 <%= @post.created_at %></span>
+        <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
+        <%= link_to @comment.user.name, user_path(@comment.user) %> <span class="text-muted small">投稿日 <%= @post.created_at %></span>
       </div>
     <% end %>
   </div>
