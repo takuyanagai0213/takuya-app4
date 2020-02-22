@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.all
     @comment = @post.comments.build(user_id: current_user.id)
+    @pictures = @post.picture_details
   end
   
   def create

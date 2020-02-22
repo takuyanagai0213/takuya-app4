@@ -11,13 +11,23 @@
     <%= image_tag @post.picture.url if @post.picture? %>
   </div>
   
+  
+    <div class="picture_details">
+      <% @pictures.each do |picture| %>
+        <%= image_tag picture.image1.url if picture.image1? %>
+        <%= image_tag picture.image2.url if picture.image2? %>
+        <%= image_tag picture.image3.url if picture.image3? %>
+      <% end %>
+    </div>
+
+  
   <%= render 'bookmarks/bookmarks_button', post: @post %>
 </div>
 
 <div class="edit-form">
   <% if current_user?(@post.user) %>
     <div class="form-group">
-      <%= link_to '詳細画像を追加する', new_picture_detail_path, class: 'btn btn-success' %>
+      <%= link_to '詳細画像を追加する', new_picture_detail_path(id: @post.id), class: 'btn btn-success' %>
       <%= link_to '釣果を編集する', edit_post_path(@post), class: 'btn btn-success' %>
     </div>
   

@@ -13,6 +13,7 @@
     <%= f.label :picture_detail, '詳細画像' %>
     <%= f.file_field :image3, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
+    <%= hidden_field_tag :id, @id %>
 
   <%= f.submit '画像をアップロードする', class: 'btn btn-primary btn-block' %>
 <% end %>
