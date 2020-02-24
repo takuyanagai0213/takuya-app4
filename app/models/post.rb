@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :picture_details, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmark, dependent: :destroy
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
   
   private
   

@@ -66,6 +66,35 @@
   </div>
 </div>
 
+<h2>釣れた場所</h2>
+<%= form_with url: map_request_path, method: :get do |f|%>
+  <%= f.text_field :address %>
+  <%= f.submit '地図表示' %>
+<% end %>
+
+
+
+<div id='map'></div>
+
+<style>
+#map{
+  height: 400px;
+  width: 300px;
+}
+</style>
+
+<script>
+  let mapInstance 
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.681236, lng: 139.767125},
+    zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
+
 
 <div class="col-sm-4">
   <%= link_to "ホームへ戻る", root_url, class: "btn btn-default text-right" %>

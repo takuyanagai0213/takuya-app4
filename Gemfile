@@ -74,3 +74,5 @@ group :production do
 end
 
 gem 'dotenv-rails'
+gem 'gmaps4rails'
+gem 'geocoder'

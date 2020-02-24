@@ -45,6 +45,15 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: root_url)
   end
   
+  def map
+    results = Geocoder.search(params[:address])
+    @latlng = results.first.coordinates
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   private
   
   def post_params
