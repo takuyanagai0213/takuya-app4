@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h1><%= @post.content %></h1>
+    <h1><%= @post.title %></h1>
   </div>
   
   <div class="card-body">
@@ -77,10 +77,10 @@
 <div id='map'></div>
 
 <style>
-#map{
-  height: 400px;
-  width: 300px;
-}
+  #map{
+    height: 400px;
+    width: 300px;
+  }
 </style>
 
 <script>
@@ -92,6 +92,105 @@
     zoom: 8
     });
   }
+  
+  var markerD = [];
+
+      // DB情報の取得(ajax)
+      $(function(){
+        $.ajax({
+          type: "POST",
+          url: "data.php",
+          dataType: "json",
+          success: function(data){
+            markerD = data;
+            setMarker(markerD);
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown){
+            alert('Error : ' + errorThrown);
+          }
+        });
+      });
+
+      var map;
+      var marker = [];
+      var infoWindow = [];
+
+      function setMarker(markerData) {
+
+        // console.log(markerData);
+        // console.log(markerData.length);
+
+        //マーカー生成
+        var sidebar_html = "";
+        var icon;
+
+        for (var i = 0; i < markerData.length; i++) {
+
+          var latNum = parseFloat(markerData[i]['lat']);
+          var lngNum = parseFloat(markerData[i]['lng']);
+
+          // マーカー位置セット
+          var markerLatLng = new google.maps.LatLng({
+            lat: latNum,
+            lng: lngNum
+          });
+          // マーカーアイコンのセット(行った所はアイコンを変える)
+          if (markerData[i]['status'] === 'went'){
+            icon = new google.maps.MarkerImage('./icon_color/went' + markerData[i]['classNo'] + '.png');
+          } else {
+            icon = new google.maps.MarkerImage('./icon_color/list' + markerData[i]['classNo'] + '.png');
+          }
+          // マーカーのセット
+          marker[i] = new google.maps.Marker({
+            position: markerLatLng,          // マーカーを立てる位置を指定
+            map: map,                        // マーカーを立てる地図を指定
+            icon: icon                       // アイコン指定
+          });
+          // 吹き出しの追加
+          infoWindow[i] = new google.maps.InfoWindow({
+            content: markerData[i]['class'] + '：' + markerData[i]['name'] + '<br><br>' + markerData[i]['text'] + '<br><br>' + markerData[i]['img']
+          });
+          // サイドバー
+          var wantStar;
+          if(markerData[i]['status'] === 'went') {
+            wantStar = '●';
+          } else if(markerData[i]['status'] === 'want') {
+            wantStar = '○';
+          } else {
+            wantStar = '・';
+          }
+          sidebar_html += wantStar + '<a href="javascript:myclick(' + i + ')">' + markerData[i]['name'] + '<\/a><br />';
+          // マーカーにクリックイベントを追加
+          markerEvent(i);
+        }
+
+        // Marker clusterの追加
+        var markerCluster = new MarkerClusterer(
+          map,
+          marker,
+          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+        );
+
+        // サイドバー
+        document.getElementById("sidebar").innerHTML = sidebar_html;
+      }
+
+      var openWindow;
+
+      function markerEvent(i) {
+        marker[i].addListener('click', function() {
+          myclick(i);
+        });
+      }
+
+      function myclick(i) {
+        if(openWindow){
+          openWindow.close();
+        }
+        infoWindow[i].open(map, marker[i]);
+        openWindow = infoWindow[i];
+      }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
 

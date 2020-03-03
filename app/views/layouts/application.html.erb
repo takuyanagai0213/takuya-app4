@@ -8,13 +8,23 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.min.css">
+    
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+    <script>
+        $(function(){
+	    $('.bxslider').bxSlider({
+		      auto: true,
+		      slideWidth: 640,
+		      minSlides: 3
+	    });
+    });
+    </script>
   </head>
 
   <body>
@@ -25,5 +35,7 @@
 
       <%= yield %>
     </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
   </body>
 </html>
