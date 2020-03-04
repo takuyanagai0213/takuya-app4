@@ -48,9 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql
+  encoding: utf8
   pool: 5
   database: takuya-app4_production
   username: takuya-app4
   password: <%= ENV['TAKUYA-APP4_DATABASE_PASSWORD'] %>
+  host: <%= ENV['AWS_RDS_ENDPOINT'] %>
