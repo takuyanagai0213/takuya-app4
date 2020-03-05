@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @comments = @post.comments.all
     @comment = @post.comments.build(user_id: current_user.id)
     @pictures = @post.picture_details
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success] = '投稿を削除しました。'
-    redirect_back(fallback_location: root_url)
+    redirect_to root_url
   end
   
   def map
