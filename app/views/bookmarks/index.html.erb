@@ -2,7 +2,7 @@
   <% @bookmarks.each do |post| %>
     <li class="card">
       <div class="card-header">
-        <h4><%= link_to "#{post.content}", post_path(post) %></h4>
+        <h4><%= link_to "#{post.title}", post_path(post) %></h4>
       </div>
       
       <div class="card-body">

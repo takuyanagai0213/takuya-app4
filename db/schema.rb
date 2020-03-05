@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_125326) do
+ActiveRecord::Schema.define(version: 2020_03_03_134735) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -58,6 +58,11 @@ ActiveRecord::Schema.define(version: 2020_03_03_125326) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.string "weather"
+    t.string "temperature"
+    t.string "time_zone"
+    t.string "how_to_fish"
+    t.string "fish_caught"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

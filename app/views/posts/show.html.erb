@@ -1,200 +1,128 @@
-<div class="card">
-  <div class="card-header">
-    <h1><%= @post.title %></h1>
-  </div>
-  
-  <div class="card-body">
-    <p><%= @post.detail %></p>
-  </div>
-  
-  <div class="picture">
-    <%= image_tag @post.picture.url if @post.picture? %>
-  </div>
-  
-  
-    <div class="picture_details">
-      <% @pictures.each do |picture| %>
-        <%= image_tag picture.image1.url if picture.image1? %>
-        <%= image_tag picture.image2.url if picture.image2? %>
-        <%= image_tag picture.image3.url if picture.image3? %>
-      <% end %>
-    </div>
-
-  
+<div class="text-right m-3">
   <%= render 'bookmarks/bookmarks_button', post: @post %>
 </div>
-
-<div class="edit-form">
-  <% if current_user?(@post.user) %>
-    <div class="form-group">
-      <%= link_to '詳細画像を追加する', new_picture_detail_path(id: @post.id), class: 'btn btn-success' %>
-      <%= link_to '釣果を編集する', edit_post_path(@post), class: 'btn btn-success' %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1><%= @post.title %></h1>
     </div>
-  
-    <div class="form-group">
-      <%#= link_to "Delete",post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-    </div>
-  <% end %>
-</div>
-<div class="comment">
-  <div class="col-sm-5">
-    <h2>コメント一覧</h2>
-    <% @comments.each do |comment| %>
-      <div class="card">
-        <%= comment.content %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md m-3">
+          <ul class="bxslider">
+            <li><%= image_tag @post.picture.url if @post.picture? %></li>
+            <% @pictures.each do |picture| %>
+              <li><%= image_tag picture.image1.url if picture.image1? %></li>
+              <li><%= image_tag picture.image1.url if picture.image1? %></li>
+              <li><%= image_tag picture.image1.url if picture.image1? %></li>
+            <% end %>
+          </ul>
+          <h3>釣行場所</h3>
+          
+          <div class="map">
+            <div id="map">
+            </div>
+            
+            <style>
+              #map{
+                height: 300px;
+                width: 400px;
+              }
+            </style>
+          </div>
+          
+          <div type="text/javascript">
+            <script>
+              function initMap(){
+                let map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+                zoom: 15
+                });
+              }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">天気</h4>
+            <div class="panel-body">
+              <p><%= @post.weather %></p>
+            </div>
+          </div>
+          
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">時間帯</h4>
+            <div class="panel-body">
+              <p><%= @post.time_zone %></p>
+            </div>
+          </div>
+          
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">釣り方</h4>
+            <div class="panel-body">
+              <p><%= @post.how_to_fish %></p>
+            </div>
+          </div>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">釣れた魚</h4>
+            <div class="panel-body">
+              <p><%= @post.fish_caught %></p>
+            </div>
+          </div>
+          
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">釣行レポート</h4>
+            <div class="panel-body">
+              <p><%= @post.detail %></p>
+            </div>
+          </div>
+          <h3>コメント一覧</h3>
+            <% @comments.each do |comment| %>
+              <div class="text-left">
+                <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
+                <%= link_to @comment.user.name, user_path(@comment.user) %>
+              </div>
+              <div class="card">
+                <%= comment.content %>
+                <span class="text-muted small text-right">投稿日 <%= @post.created_at %></span>
+              </div>
+              <% if current_user = comment.user %>
+                <%= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+              <% end %>
+            <% end %>
+        </div>
       </div>
-      <% if current_user = comment.user %>
-        <%= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+    </div>
+  </div>
+</div>
+
+  <div class="comments">
+    <div class="col-sm-5 mt-5">
+      <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="form-group">
+          <%= f.label :content, 'コメント' %>
+          <%= f.text_area :content, class: "form-control", rows: 5 %>
+        </div>
+          <%= f.submit 'コメントをする', class: "btn btn-primary" %>
       <% end %>
-      <div class="text-right">
-        <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
-        <%= link_to @comment.user.name, user_path(@comment.user) %> <span class="text-muted small">投稿日 <%= @post.created_at %></span>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
-
-<div class="form-group">
-  <div class="col-sm-5">
-    <%= form_with(model: [@post, @comment], local: true) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+  <div class="text-right">
+    <% if current_user?(@post.user) %>
       <div class="form-group">
-        <%= f.text_area :content, class: "form-control", rows: 5 %>
+        <%= link_to '画像追加', new_picture_detail_path(id: @post.id), class: 'btn btn-success' %>
+        <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success' %>
       </div>
-        <%= f.submit 'コメントをする', class: "btn btn-primary" %>
+      <div class="form-group text-right">
+        <%= link_to "削除",@post, method: :delete, data: { confirm: "本当に削除してよろしいでしょうか?" }, class: 'btn btn-danger btn-sm' %>
+      </div>
     <% end %>
   </div>
-</div>
 
-<h2>釣れた場所</h2>
-<%= form_with url: map_request_path, method: :get do |f|%>
-  <%= f.text_field :address %>
-  <%= f.submit '地図表示' %>
-<% end %>
-
-
-
-<div id='map'></div>
-
-<style>
-  #map{
-    height: 400px;
-    width: 300px;
-  }
-</style>
-
-<script>
-  let mapInstance 
-
-  function initMap(){
-    mapInstance = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.681236, lng: 139.767125},
-    zoom: 8
-    });
-  }
-  
-  var markerD = [];
-
-      // DB情報の取得(ajax)
-      $(function(){
-        $.ajax({
-          type: "POST",
-          url: "data.php",
-          dataType: "json",
-          success: function(data){
-            markerD = data;
-            setMarker(markerD);
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown){
-            alert('Error : ' + errorThrown);
-          }
-        });
-      });
-
-      var map;
-      var marker = [];
-      var infoWindow = [];
-
-      function setMarker(markerData) {
-
-        // console.log(markerData);
-        // console.log(markerData.length);
-
-        //マーカー生成
-        var sidebar_html = "";
-        var icon;
-
-        for (var i = 0; i < markerData.length; i++) {
-
-          var latNum = parseFloat(markerData[i]['lat']);
-          var lngNum = parseFloat(markerData[i]['lng']);
-
-          // マーカー位置セット
-          var markerLatLng = new google.maps.LatLng({
-            lat: latNum,
-            lng: lngNum
-          });
-          // マーカーアイコンのセット(行った所はアイコンを変える)
-          if (markerData[i]['status'] === 'went'){
-            icon = new google.maps.MarkerImage('./icon_color/went' + markerData[i]['classNo'] + '.png');
-          } else {
-            icon = new google.maps.MarkerImage('./icon_color/list' + markerData[i]['classNo'] + '.png');
-          }
-          // マーカーのセット
-          marker[i] = new google.maps.Marker({
-            position: markerLatLng,          // マーカーを立てる位置を指定
-            map: map,                        // マーカーを立てる地図を指定
-            icon: icon                       // アイコン指定
-          });
-          // 吹き出しの追加
-          infoWindow[i] = new google.maps.InfoWindow({
-            content: markerData[i]['class'] + '：' + markerData[i]['name'] + '<br><br>' + markerData[i]['text'] + '<br><br>' + markerData[i]['img']
-          });
-          // サイドバー
-          var wantStar;
-          if(markerData[i]['status'] === 'went') {
-            wantStar = '●';
-          } else if(markerData[i]['status'] === 'want') {
-            wantStar = '○';
-          } else {
-            wantStar = '・';
-          }
-          sidebar_html += wantStar + '<a href="javascript:myclick(' + i + ')">' + markerData[i]['name'] + '<\/a><br />';
-          // マーカーにクリックイベントを追加
-          markerEvent(i);
-        }
-
-        // Marker clusterの追加
-        var markerCluster = new MarkerClusterer(
-          map,
-          marker,
-          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-        );
-
-        // サイドバー
-        document.getElementById("sidebar").innerHTML = sidebar_html;
-      }
-
-      var openWindow;
-
-      function markerEvent(i) {
-        marker[i].addListener('click', function() {
-          myclick(i);
-        });
-      }
-
-      function myclick(i) {
-        if(openWindow){
-          openWindow.close();
-        }
-        infoWindow[i].open(map, marker[i]);
-        openWindow = infoWindow[i];
-      }
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
-
-
-<div class="col-sm-4">
-  <%= link_to "ホームへ戻る", root_url, class: "btn btn-default text-right" %>
-</div>

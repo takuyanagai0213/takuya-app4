@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_many :posts
   has_many :comments 
+  has_many :picture_details
   
   has_many :bookmarks
   has_many :addbookmark, through: :bookmarks, source: :post

@@ -22,6 +22,4 @@ Rails.application.routes.draw do
   resources :picture_details, only: [:index, :new, :create]
   
   resources :bookmarks, only: [:index, :create, :destroy]
-  
-  get '/map_request', to: 'posts#map', as: 'map_request'
 end

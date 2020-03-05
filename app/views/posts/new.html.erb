@@ -10,8 +10,41 @@
       <%= f.label :detail, '内容' %>
       <%= f.text_area :detail, class: 'form-control', rows: 5 %>
     </div>
-    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
+    
+    <div class="form-group">
+      <%= f.label :address, '釣行場所' %>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :weather, '天気' %>
+      <%= f.select :weather,["晴れ", "曇り", "雨" ], {},   class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">    
+      <%= f.label :temperature, '気温' %>
+      <%= f.select :temperature,["0~5℃", "6~10℃", "11~15℃", "16~20℃", "21~25℃", "26~30℃", "31~35℃" ], {},   class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :time_zone, '時間帯' %>
+      <%= f.select :time_zone,["朝", "昼", "夕方", "夜" ], {},   class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :how_to_fish, '釣り方' %>
+      <%= f.text_field :how_to_fish, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :fish_caught, '釣れた魚' %>
+      <%= f.text_field :fish_caught, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :picture, 'タイトル画像' %>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
+    </div>
+    <%= f.submit '釣果を投稿する', class: 'btn btn-primary btn-block' %>
   <% end %>
   
   <script type="text/javascript">
