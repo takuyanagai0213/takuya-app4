@@ -70,7 +70,7 @@ gem 'mini_magick',             '4.7.0'
 group :production do
   gem 'fog', '1.42'
   gem 'fog-aws' 
-  gem 'unicorn'
+  gem 'unicorn', '5.4.1'
 end
 
 gem 'dotenv-rails'
