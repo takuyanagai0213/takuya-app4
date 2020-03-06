@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   end
   
   def create
-    puts 'OK'
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = '釣果を投稿しました。'

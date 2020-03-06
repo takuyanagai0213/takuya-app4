@@ -1,7 +1,7 @@
 <%= form_with(model: @picture, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :picture_detail, '詳細画像' %>
-    <%= f.file_field :picture_detail, accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.file_field :picture_details, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
   <%= hidden_field_tag :id, @id %>
 

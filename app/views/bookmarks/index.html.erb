@@ -1,4 +1,7 @@
-
+<h2>ブックマークページ</h2>
+<% if current_user.bookmarks.empty? %> 
+  <p>まだブックマークはありません。</p>
+<% else %>
   <% @bookmarks.each do |post| %>
     <li class="card">
       <div class="card-header">
@@ -23,5 +26,5 @@
         <% end %>
     </li>
   <% end %>
-  <%#= paginate @bookmarks %>
+<% end %>
         

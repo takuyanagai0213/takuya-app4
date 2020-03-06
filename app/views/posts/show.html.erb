@@ -1,128 +1,118 @@
+  
 <div class="text-right m-3">
   <%= render 'bookmarks/bookmarks_button', post: @post %>
 </div>
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h1><%= @post.title %></h1>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md m-3">
-          <ul class="bxslider">
-            <li><%= image_tag @post.picture.url if @post.picture? %></li>
-            <% @pictures.each do |picture| %>
-              <li><%= image_tag picture.image1.url if picture.image1? %></li>
-              <li><%= image_tag picture.image1.url if picture.image1? %></li>
-              <li><%= image_tag picture.image1.url if picture.image1? %></li>
-            <% end %>
-          </ul>
-          <h3>釣行場所</h3>
-          
-          <div class="map">
-            <div id="map">
-            </div>
-            
-            <style>
-              #map{
-                height: 300px;
-                width: 400px;
-              }
-            </style>
-          </div>
-          
-          <div type="text/javascript">
-            <script>
-              function initMap(){
-                let map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
-                zoom: 15
-                });
-              }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4 class="panel-title">天気</h4>
-            <div class="panel-body">
-              <p><%= @post.weather %></p>
-            </div>
-          </div>
-          
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4 class="panel-title">時間帯</h4>
-            <div class="panel-body">
-              <p><%= @post.time_zone %></p>
-            </div>
-          </div>
-          
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4 class="panel-title">釣り方</h4>
-            <div class="panel-body">
-              <p><%= @post.how_to_fish %></p>
-            </div>
-          </div>
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4 class="panel-title">釣れた魚</h4>
-            <div class="panel-body">
-              <p><%= @post.fish_caught %></p>
-            </div>
-          </div>
-          
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4 class="panel-title">釣行レポート</h4>
-            <div class="panel-body">
-              <p><%= @post.detail %></p>
-            </div>
-          </div>
-          <h3>コメント一覧</h3>
-            <% @comments.each do |comment| %>
-              <div class="text-left">
-                <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
-                <%= link_to @comment.user.name, user_path(@comment.user) %>
-              </div>
-              <div class="card">
-                <%= comment.content %>
-                <span class="text-muted small text-right">投稿日 <%= @post.created_at %></span>
-              </div>
-              <% if current_user = comment.user %>
-                <%#= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-              <% end %>
-            <% end %>
-        </div>
+  <h1><%= @post.title %></h1>
+</div>
+<ul class="bxslider">
+  <li><%= image_tag @post.picture.url if @post.picture? %></li>
+  <% @pictures.each do |picture| %>
+    <li><%= image_tag picture.image1.url if picture.image1? %></li>
+    <li><%= image_tag picture.image1.url if picture.image1? %></li>
+    <li><%= image_tag picture.image1.url if picture.image1? %></li>
+  <% end %>
+</ul>
+<div class="row">
+  <div class="col-md-7">
+    <table class="table">
+      <thead class="thead-lignt">
+        <h3>釣果詳細</h3>
+      </thead>
+      <tbody>
+        <tr>
+          <th>天気</th>
+          <td><%= @post.weather %></td>
+        </tr>
+        <tr>
+          <th>時間帯</th>
+          <td><%= @post.time_zone %></td>
+        </tr>
+        <tr>
+          <th>釣り方</th>
+          <td><%= @post.how_to_fish %></td>
+        </tr>
+        <tr>
+          <th>釣れた魚</th>
+          <td><%= @post.fish_caught %></td>
+        </tr>
+        <tr>
+          <th>釣行レポート</th>
+          <td><%= @post.detail %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md">
+    <h3>釣行場所</h3>
+    
+    <div class="map">
+      <div id="map">
       </div>
+      
+      <style>
+        #map{
+          height: 300px;
+          width: 400px;
+        }
+      </style>
+    </div>
+    
+    <div type="text/javascript">
+      <script>
+        function initMap(){
+          let map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+          zoom: 15
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
     </div>
   </div>
 </div>
 
-  <div class="comments">
-    <div class="col-sm-5 mt-5">
-      <%= form_with(model: [@post, @comment], local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-        <div class="form-group">
-          <%= f.label :content, 'コメント' %>
-          <%= f.text_area :content, class: "form-control", rows: 5 %>
-        </div>
-          <%= f.submit 'コメントをする', class: "btn btn-primary" %>
-      <% end %>
+<% if @comments.empty? %>
+  <h3>コメント一覧</h3>
+  <p>まだコメントはありません。</p>
+<% else %>
+  <h3>コメント一覧</h3>
+  <% @comments.each do |comment| %>
+    <div class="text-left">
+      <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
+      <%= link_to @comment.user.name, user_path(@comment.user) %>
     </div>
-  </div>
-  <div class="text-right">
-    <% if current_user?(@post.user) %>
+    <div class="card">
+      <%= comment.content %>
+      <span class="text-muted small text-right">投稿日 <%= @post.created_at %></span>
+    </div>
+    <% if current_user = comment.user %>
+      <%#= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="comments">
+  <div class="col-md-6">
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">
-        <%= link_to '画像追加', new_picture_detail_path(id: @post.id), class: 'btn btn-success' %>
-        <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success' %>
+        <%= f.label :content, 'コメント' %>
+        <%= f.text_area :content, class: "form-control", rows: 5 %>
       </div>
-      <div class="form-group text-right">
-        <%= link_to "削除",@post, method: :delete, data: { confirm: "本当に削除してよろしいでしょうか?" }, class: 'btn btn-danger btn-sm' %>
-      </div>
+        <%= f.submit 'コメントをする', class: "btn btn-primary" %>
     <% end %>
   </div>
+</div>
 
+<div class="text-right">
+  <% if current_user?(@post.user) %>
+    <div class="form-group">
+      <%= link_to '画像追加', new_picture_detail_path(id: @post.id), class: 'btn btn-success' %>
+      <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success' %>
+    </div>
+    <div class="form-group text-right">
+      <%= link_to "削除",@post, method: :delete, data: { confirm: "本当に削除してよろしいでしょうか?" }, class: 'btn btn-danger btn-sm' %>
+    </div>
+  <% end %>
+</div>

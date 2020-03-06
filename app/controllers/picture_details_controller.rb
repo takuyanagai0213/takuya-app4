@@ -5,7 +5,6 @@ class PictureDetailsController < ApplicationController
   end
 
   def create
-    #@picture = PictureDetail.new
     @post = current_user.posts.find(params[:id])
     @picture = @post.picture_details.build(picture_detail_params)
     if @picture.save
