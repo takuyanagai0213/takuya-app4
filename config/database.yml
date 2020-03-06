@@ -51,7 +51,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: takuya-app4_production
+  database: fishingshares-mysql
   username: admin
   password: password
   host: <%= ENV['AWS_RDS_ENDPOINT'] %>
