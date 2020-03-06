@@ -71,6 +71,7 @@ group :production do
   gem 'pg', '>= 0.18', '< 2.0'
   gem 'fog', '1.42'
   gem 'fog-aws' 
+  gem 'unicorn'
 end
 
 gem 'dotenv-rails'
