@@ -10,7 +10,7 @@ class PictureDetailsController < ApplicationController
     @picture = @post.picture_details.build(picture_detail_params)
     if @picture.save
       flash[:success] = '画像を投稿しました。'
-      redirect_to root_url
+      redirect_to post_path(@post)
     else
       flash[:danger] = '画像の投稿に失敗しました。'
       render :new, id: @post
