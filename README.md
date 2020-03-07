@@ -1,24 +1,23 @@
-# README
+## 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FishingShares は釣りの画像や釣行レポートを共有することができるSNSサービスです。
 
-Things you may want to cover:
+## 何ができるのか？（機能）
+FishingShares は、以下のことができます。
 
-* Ruby version
+- ユーザの登録
+- ユーザプロフィールの編集
+- 記事の投稿/編集/削除
+- 記事に画像を添付して、投稿ができる
+- 記事の詳細ページで、釣れた場所（GoogleMapにて）を確認できる
+- 記事にコメントをする
+- 記事をブックマーク（お気に入りに追加）する
 
-* System dependencies
+## どのように作られているか？（技術）
+FishingShares は、以下の技術を使用しています。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Rails
+- Heroku
+- S3
+- GoogleMap API
+- Postgrsql
