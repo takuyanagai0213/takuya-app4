@@ -68,9 +68,9 @@ gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
 
 group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
   gem 'fog', '1.42'
   gem 'fog-aws' 
+  gem 'unicorn', '5.4.1'
 end
 
 gem 'dotenv-rails'
