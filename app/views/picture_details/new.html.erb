@@ -1,7 +1,8 @@
 <%= form_with(model: @picture, local: true) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group">
-    <%= f.label :picture_detail, '詳細画像' %>
-    <%= f.file_field :picture_details, accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.label :image1, '詳細画像' %>
+    <%= f.file_field :image1, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
   <%= hidden_field_tag :id, @id %>
 

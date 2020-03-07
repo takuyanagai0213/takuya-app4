@@ -5,20 +5,21 @@ class PictureDetailsController < ApplicationController
   end
 
   def create
+    @id = params[:id]
     @post = current_user.posts.find(params[:id])
     @picture = @post.picture_details.build(picture_detail_params)
     if @picture.save
       flash[:success] = '画像を投稿しました。'
       redirect_to root_url
     else
-      flash.now[:danger] = '画像の投稿に失敗しました。'
-      render :new
+      flash[:danger] = '画像の投稿に失敗しました。'
+      render :new, id: @post
     end
   end
 
   private
   
   def picture_detail_params
-    params.require(:picture_detail).permit(:image1)
+    params.require(:picture_detail).permit(:image1) if params[:picture_detail]
   end
 end
