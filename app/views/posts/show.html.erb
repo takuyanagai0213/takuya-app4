@@ -1,24 +1,21 @@
-  
 <div class="text-right m-3">
   <%= render 'bookmarks/bookmarks_button', post: @post %>
 </div>
 <div class="container">
   <h1><%= @post.title %></h1>
 </div>
-<ul class="bxslider">
-  <li><%= image_tag @post.picture.url if @post.picture? %></li>
-  <% @pictures.each do |picture| %>
-    <li><%= image_tag picture.image1.url if picture.image1? %></li>
-    <li><%= image_tag picture.image1.url if picture.image1? %></li>
-    <li><%= image_tag picture.image1.url if picture.image1? %></li>
-  <% end %>
-</ul>
+  <ul class="bxslider">
+      <li><%= image_tag @post.picture.url if @post.picture? %></li>
+    <% @pictures.each do |picture| %>
+      <li><%= image_tag picture.image1.url if picture.image1? %></li>
+      <li><%= image_tag picture.image1.url if picture.image1? %></li>
+      <li><%= image_tag picture.image1.url if picture.image1? %></li>
+    <% end %>
+  </ul>
 <div class="row">
   <div class="col-md-7">
+    <h3>釣果詳細</h3>
     <table class="table">
-      <thead class="thead-lignt">
-        <h3>釣果詳細</h3>
-      </thead>
       <tbody>
         <tr>
           <th>天気</th>
@@ -43,19 +40,11 @@
       </tbody>
     </table>
   </div>
-  <div class="col-md">
+  <div class="col-md-5">
     <h3>釣行場所</h3>
-    
     <div class="map">
       <div id="map">
       </div>
-      
-      <style>
-        #map{
-          height: 300px;
-          width: 400px;
-        }
-      </style>
     </div>
     
     <div type="text/javascript">
@@ -86,9 +75,6 @@
       <%= comment.content %>
       <span class="text-muted small text-right">投稿日 <%= @post.created_at %></span>
     </div>
-    <% if current_user = comment.user %>
-      <%#= link_to "削除",post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-    <% end %>
   <% end %>
 <% end %>
 
