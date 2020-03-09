@@ -49,18 +49,18 @@ test:
 #
 production:
   # heroku用の設定  
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: takuya-app4_production
-  username: takuya-app4
-  password: <%= ENV['TAKUYA-APP4_DATABASE_PASSWORD'] %>
+  #adapter: postgresql
+  #encoding: unicode
+  #pool: 5
+  #database: takuya-app4_production
+  #username: takuya-app4
+  #password: <%= ENV['TAKUYA-APP4_DATABASE_PASSWORD'] %>
   
   # EC2用の設定
-  # adapter: mysql2
-  # encoding: utf8
-  # pool: 5
-  # database: fishingshares-mysql
-  # username: admin
-  # password: password
-  # host: <%= ENV['AWS_RDS_ENDPOINT'] %>
+   adapter: mysql2
+   encoding: utf8
+   pool: 5
+   database: fishingshares-mysql
+   username: admin
+   password: password
+   host: <%= ENV['AWS_RDS_ENDPOINT'] %>
