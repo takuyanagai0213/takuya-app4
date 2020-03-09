@@ -21,7 +21,7 @@
 
         <% if current_user?(post.user) %>
           <div class="form-group text-right">
-            <%= link_to "Delete",post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "投稿削除",post, method: :delete, data: { confirm: "本当に削除してもよろしいでしょうか？" }, class: 'btn btn-danger btn-sm' %>
           </div>
         <% end %>
     </li>
