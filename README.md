@@ -18,7 +18,7 @@ FishingShares は、以下のことができます。
 FishingShares は、以下の技術を使用しています。
 
 - Rails
-- Pdocker（開発環境に導入）
+- docker（開発環境に導入）
 - AWS EC2インスタンスでデプロイ
 　→Webサーバにnginx、アプリケーションサーバにunicornを使用
 - AWS S3
