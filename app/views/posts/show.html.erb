@@ -69,7 +69,7 @@
   <% @comments.each do |comment| %>
     <div class="text-left">
       <img class="mr-2 rounded" src="<%= gravatar_url(@comment.user, { size: 30 }) %>" alt="">
-      <%= link_to @comment.user.name, user_path(@comment.user) %>
+      <%= link_to comment.user.name, user_path(comment.user) %>
     </div>
     <div class="card">
       <%= comment.content %>
