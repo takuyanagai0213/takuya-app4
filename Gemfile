@@ -78,4 +78,4 @@ end
 gem 'dotenv-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
-gem 'factory_bot_rails'
+#gem 'factory_bot_rails'
