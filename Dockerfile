@@ -1,5 +1,5 @@
-FROM ruby:2.5.3
-RUN apt-get update -qq && apt-get install -y vim nodejs mysql-client
+FROM ruby:2.6.3
+RUN apt-get update -qq && apt-get install -y vim nodejs default-mysql-client
 COPY . /fishingshares
 ENV APP_HOME /fishingshares
 WORKDIR $APP_HOME

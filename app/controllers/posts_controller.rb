@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in
+  #before_action :require_user_logged_in
   before_action :correct_user, only: [:edit,:update, :destroy]
   def new
     @post = current_user.posts.build
@@ -8,9 +8,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.all
-    @comment = @post.comments.build(user_id: current_user.id)
     @pictures = @post.picture_details
     results = Geocoder.search(params[:address])
+    @comment = @post.comments.build(user_id: current_user.id)
   end
   
   def create
