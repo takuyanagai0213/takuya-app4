@@ -1,48 +1,65 @@
-version: 2.1
-
-executors:
-  default:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/php:7
-
-commands:
-  composer_install_with_cache:
-    steps:
-      - restore_cache:
-          keys:
-            - v1-composer-deps-{{ checksum "composer.json" }}
-            - v1-composer-deps-
-      - run: composer install --dev --no-interaction --working-dir=path/to
-      - save_cache:
-          key: v1-composer-deps-{{ checksum "composer.json" }}
-          paths:
-            - ./vendor
-
+version: 2
 jobs:
-  checkout_code:
-    executor: default
+  build:
+    working_directory: ~/circleci-demo-ruby-rails
+    docker:
+      - image: circleci/ruby:2.5.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          MYSQL_USER: root
+          MYSQL_DB: fishingshares_db_test_1
+
     steps:
       - checkout
-      - composer_install_with_cache
-      - save_cache: # ソースコードをキャッシュ
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+      - run:
+          name: bundlerをinstall
+          command: |
+            gem update --system
+            gem install bundler
+      - run:
+          name: bundle installを実行
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+
+      - run:
+          name: mysqlをinstall
+          command: sudo apt install -y mysql-client || true
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
           paths:
-            - ~/repo
-
-  test:
-    executor: default
-    steps:
-      - restore_cache: # ソースコードの復元
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run: phpunit
-
+            - vendor/bundle
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+      - run:
+          name: Yarn をinstall
+          command: yarn install --cache-folder ~/.cache/yarn
+      - run:
+          name: データベースセットアッップ
+          command: |
+            bundle exec rake db:migrate
+            bundle exec rake db:schema:load
+      - run:
+          name: RSpecを実行
+          command: bundle exec rspec
+      - store_test_results:
+          path: /tmp/test-results
 workflows:
   version: 2
-  build:
+  build-deploy:
     jobs:
-      - checkout_code
-      - test:
-          requires: # checkout_codeの後に実行する
-            - checkout_code
+      - build
+      - deploy-to-master:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
