@@ -1,104 +1,48 @@
-version: '2.1'
+version: 2.1
 
-references:
-  default_docker_ruby_executor: &default_docker_ruby_executor
-    image: circleci/ruby:2.6.3-stretch-node
-    environment:
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      BUNDLE_PATH: vendor/bundle
-      PGHOST: 127.0.0.1
-      PGUSER: circleci-demo-ruby
-      PGPASSWORD: ""
-      RAILS_ENV: test
-  postgres: &postgres
-    image: circleci/postgres:9.5-alpine
-    environment:
-      POSTGRES_USER: circleci-demo-ruby
-      POSTGRES_DB: rails_blog_test
-      POSTGRES_PASSWORD: ""
+executors:
+  default:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/php:7
+
+commands:
+  composer_install_with_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-composer-deps-{{ checksum "composer.json" }}
+            - v1-composer-deps-
+      - run: composer install -n --prefer-dist
+      - save_cache:
+          key: v1-composer-deps-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
 
 jobs:
-  build:
-    docker:
-      - *default_docker_ruby_executor
+  checkout_code:
+    executor: default
     steps:
       - checkout
-      # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      # bundle cache
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-      # Store bundle cache
-      - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+      - composer_install_with_cache
+      - save_cache: # ソースコードをキャッシュ
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - vendor/bundle
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+            - ~/repo
+
   test:
-    parallelism: 3
-    docker:
-      - *default_docker_ruby_executor
-      - *postgres
+    executor: default
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      # Run rspec in parallel
-      - run:
-          command: |
-            mkdir /tmp/test-results
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+      - restore_cache: # ソースコードの復元
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run: phpunit
 
 workflows:
-  version: '2'
-  build_and_test:
+  version: 2
+  build:
     jobs:
-      - build
+      - checkout_code
       - test:
-          requires:
-            - build
-
-# - add_ssh_keys:
-#     fingerprints:
-#       - 17:4b:5f:9e:54:4f:55:72:c6:4c:89:66:16:42:97:8d	
+          requires: # checkout_codeの後に実行する
+            - checkout_code
