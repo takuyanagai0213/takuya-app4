@@ -69,7 +69,7 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy-to-master:
+      - deploy:
           requires:
             - build
             # masterブランチがpushされた場合のみデプロイを実行
