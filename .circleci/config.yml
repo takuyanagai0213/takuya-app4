@@ -13,7 +13,7 @@ commands:
           keys:
             - v1-composer-deps-{{ checksum "composer.json" }}
             - v1-composer-deps-
-      - run: composer install -n --prefer-dist --working-dir=path/to
+      - run: composer install --dev --no-interaction --working-dir=path/to
       - save_cache:
           key: v1-composer-deps-{{ checksum "composer.json" }}
           paths:
