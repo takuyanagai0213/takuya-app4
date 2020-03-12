@@ -54,8 +54,8 @@ jobs:
           command: bundle exec rspec
       - store_test_results:
           path: /tmp/test-results
-# EC2にSSH接続し、デプロイを実行
- deploy:
+    # EC2にSSH接続し、デプロイを実行
+  deploy:
     machine:
       image: circleci/classic:edge
     steps:
