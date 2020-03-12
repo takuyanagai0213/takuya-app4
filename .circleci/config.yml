@@ -63,7 +63,7 @@ jobs:
       # CircleCIに登録した秘密鍵を呼び出す。
       - add_ssh_keys:
          fingerprints:
-          - "17:4b:5f:9e:54:4f:55:72:c6:4c:89:66:16:42:97:8d"
+          - "68:bc:8f:29:40:65:c8:57:97:ab:0a:8e:1c:17:16:df"
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull'
 # テストが成功した場合のみ、デプロイを実行
 workflows:
