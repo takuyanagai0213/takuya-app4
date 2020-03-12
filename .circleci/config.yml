@@ -43,11 +43,11 @@ jobs:
       - run:
           name: Yarn をinstall
           command: yarn install --cache-folder ~/.cache/yarn
-      # - run:
-      #     name: データベースセットアップ
-      #     command: |
-      #       bundle exec rake db:migrate
-      #       bundle exec rake db:schema:load
+      - run:
+          name: データベースセットアップ
+          command: |
+            bundle exec rake db:migrate
+            bundle exec rake db:schema:load
       - run:
           name: RSpecを実行
           command: bundle exec rspec
