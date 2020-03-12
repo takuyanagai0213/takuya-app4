@@ -45,7 +45,7 @@ jobs:
           command: yarn install --cache-folder ~/.cache/yarn
       - run:
           name: 'wait for db'
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
       - run:
           name: データベースセットアップ
           command: |
