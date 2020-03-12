@@ -1,0 +1,13 @@
+current directory: /Users/takuya/Desktop/myaaa/fishingshares/vendor/bundle/ruby/2.5.0/gems/json-2.3.0/ext/json
+/Users/takuya/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20200311-91993-1uf7g3e.rb extconf.rb
+creating Makefile
+
+current directory: /Users/takuya/Desktop/myaaa/fishingshares/vendor/bundle/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/takuya/Desktop/myaaa/fishingshares/vendor/bundle/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/takuya/Desktop/myaaa/fishingshares/vendor/bundle/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" install

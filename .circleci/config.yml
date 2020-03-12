@@ -1,4 +1,4 @@
-version: 2
+version: '2'
 
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
@@ -91,7 +91,7 @@ jobs:
           destination: test-results
 
 workflows:
-  version: 2
+  version: '2'
   build_and_test:
     jobs:
       - build
@@ -99,6 +99,6 @@ workflows:
           requires:
             - build
 
-- add_ssh_keys:
-    fingerprints:
-      - 17:4b:5f:9e:54:4f:55:72:c6:4c:89:66:16:42:97:8d	
+# - add_ssh_keys:
+#     fingerprints:
+#       - 17:4b:5f:9e:54:4f:55:72:c6:4c:89:66:16:42:97:8d	
