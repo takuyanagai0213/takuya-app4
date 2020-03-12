@@ -7,12 +7,12 @@ jobs:
         environment:
           RAILS_ENV: test
           DBHOST: 127.0.0.1
-          DBUSERNAME: root
-          DBPASSWORD: password
+          username: root
+          password: password
       - image: circleci/mysql:5.7
         environment:
-          MYSQL_USER: root
-          MYSQL_DB: fishingshares_db_test_1
+          username: root
+          database: fishingshares_db_test_1
 
     steps:
       - checkout
