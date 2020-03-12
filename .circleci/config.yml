@@ -44,6 +44,9 @@ jobs:
           name: Yarn をinstall
           command: yarn install --cache-folder ~/.cache/yarn
       - run:
+          name: 'wait for db'
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
           name: データベースセットアップ
           command: |
             bundle exec rake db:migrate
