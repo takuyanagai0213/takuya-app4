@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.all
-    @pictures = @post.picture_details
+    @pictures = @post.picture_details.order(id: :desc)
     results = Geocoder.search(params[:address])
     @comment = @post.comments.build(user_id: current_user.id)
   end
