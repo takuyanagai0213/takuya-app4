@@ -44,7 +44,7 @@
  set :ssh_options, {
    keys: %w(~/.ssh/fishingshares_key_rsa),
    forward_agent: false,
-   auth_methods: %w(password)
+   auth_methods: %w(publickey)
  }
 #
 # The server-based syntax can be used to override options:
