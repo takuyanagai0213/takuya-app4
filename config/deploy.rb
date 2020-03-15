@@ -21,7 +21,7 @@ set :repo_url, "git@github.com:takuyanagai0213/fishingshares.git"
 # set :pty, true
 
 # Default value for :linked_files is []
- append :linked_files, "config/database.yml"
+# append :linked_files, "config/database.yml"
 
  set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
 # Default value for linked_dirs is []
