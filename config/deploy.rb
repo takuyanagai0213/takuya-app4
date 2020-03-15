@@ -29,8 +29,8 @@ set :repo_url, "git@github.com:takuyanagai0213/fishingshares.git"
 
 # Default value for default_env is {}
  set :default_env, {
-    rbenv_root: "/usr/local/rbenv",
-    path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+    rbenv_root: "/Users/takuya/rbenv",
+    path: "/Users/takuya/rbenv/shims:/usr/local/rbenv/bin:$PATH",
     S3_ACCESS_KEY: ENV["S3_ACCESS_KEY"],
     S3_SECRET_KEY: ENV["S3_SECRET_KEY"]
   }
