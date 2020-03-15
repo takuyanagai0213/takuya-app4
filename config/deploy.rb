@@ -28,7 +28,12 @@ set :repo_url, "git@github.com:takuyanagai0213/fishingshares.git"
  append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+ set :default_env, {
+    rbenv_root: "/usr/local/rbenv",
+    path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+    S3_ACCESS_KEY: ENV["S3_ACCESS_KEY"],
+    S3_SECRET_KEY: ENV["S3_SECRET_KEY"]
+  }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
