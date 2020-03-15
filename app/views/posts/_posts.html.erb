@@ -4,11 +4,11 @@
       <h4><%= link_to "#{post.title}", post_path(post) %></h4>
     </div>
     
-    <div class="card-body">
-      <div class="">
-        <%= image_tag post.picture.url if post.picture? %>
+    <div class="container">
+      <div class="card-body">
+        <img src="<%= post.picture.url %>" class="img-fluid">
       </div>
-      
+    </div>
       <div class="text-right">
         <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
         <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
