@@ -42,7 +42,7 @@
 # Global options
 # --------------
  set :ssh_options, {
-   keys: %w(/home/takuya/.ssh/fishingshares_key_rsa),
+   keys: %w(/home/Users/takuya/.ssh/fishingshares_key_rsa),
    forward_agent: false,
    auth_methods: %w(password)
  }
