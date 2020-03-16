@@ -1,12 +1,12 @@
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="/">Fishing Shares</a>
+    <a class="navbar-brand" style="font-size: 40px" href="/">Fishing Shares</a><i class="fas fa-fish" style="font-size: 60px"></i>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" style="font-size: 20px">
          <% if logged_in? %>
           <li class="nav-item"><%= link_to '釣果投稿', new_post_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: 'nav-link' %></li>
@@ -24,7 +24,6 @@
           <li class="nav-item"><%#= link_to '新規登録', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%#= link_to 'ログイン', login_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '釣れた魚をシェアする', login_path, class: 'nav-link' %></li>
-        
           <% end %>
       </ul>
     </div>
