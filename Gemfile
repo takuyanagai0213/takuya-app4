@@ -82,4 +82,5 @@ end
 gem 'dotenv-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'omniauth-google-oauth2'
 #gem 'factory_bot_rails'
