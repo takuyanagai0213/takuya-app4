@@ -26,23 +26,32 @@
     <table class="table">
       <tbody>
         <tr>
-          <th>天気</th>
+          <th><i class="fas fa-sun"></i>天気</th>
           <td><%= @post.weather %></td>
         </tr>
         <tr>
-          <th>時間帯</th>
+          <th><i class="fas fa-temperature-high"></i>気温</th>
+          <td><%= @post.temperature %></td>
+        </tr>
+        <tr>
+          <th><i class="far fa-clock"></i>時間帯</th>
           <td><%= @post.time_zone %></td>
         </tr>
         <tr>
-          <th>釣り方</th>
+        <tr>
+          <th><i class="fas fa-map-marker-alt"></i>釣れた場所</th>
+          <td><%= @post.address %></td>
+        </tr>
+        <tr>
+          <th><i class="fas fa-male"></i>釣り方</th>
           <td><%= @post.how_to_fish %></td>
         </tr>
         <tr>
-          <th>釣れた魚</th>
+          <th><i class="fas fa-fish"></i>釣れた魚</th>
           <td><%= @post.fish_caught %></td>
         </tr>
         <tr>
-          <th>釣行レポート</th>
+          <th><i class="fas fa-file-alt"></i>釣行レポート</th>
           <td><%= @post.detail %></td>
         </tr>
       </tbody>
