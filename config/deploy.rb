@@ -3,7 +3,7 @@ lock "~> 3.12.1"
 
 set :application, "takuya-app4"
 set :repo_url, "git@github.com:takuyanagai0213/fishingshares.git"
-
+set :branch, 'master'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -25,7 +25,8 @@ set :repo_url, "git@github.com:takuyanagai0213/fishingshares.git"
 
  set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
 # Default value for linked_dirs is []
- append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+ #append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
  set :default_env, {
