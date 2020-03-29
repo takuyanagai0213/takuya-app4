@@ -85,4 +85,6 @@ gem 'dotenv-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'omniauth-google-oauth2'
+gem 'sshkit', '1.4.0'
+
 #gem 'factory_bot_rails'
