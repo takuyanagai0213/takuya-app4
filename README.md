@@ -29,4 +29,5 @@ FishingShares は、以下の技術を使用しています。
 - RSpec
 - CircleCI
 - Capistrano
+- Terraform
 
