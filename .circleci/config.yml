@@ -74,7 +74,7 @@ workflows:
       - deploy:
           requires:
             - build
-            # masterブランチがpushされた場合のみデプロイを実行する
+            # masterブランチがpushされた場合のみデプロイを実行する.
           filters:
             branches:
               only: master
