@@ -10,15 +10,15 @@ RSpec.describe Post, type: :model do
       )
   
       user.posts.create(
-        name: "Test post",
+        title: "Test post",
       )
   
       new_post = user.posts.build(
-        name: "Test post",
+        title: "Test post",
       )
   
       new_post.valid?
-      expect(new_post.errors[:name]).to include("has already been taken")
+      expect(new_post.errors[:title]).to include("has already been taken")
     end
   
     # 二人のユーザーが同じ名前を使うことは許可すること
@@ -30,7 +30,7 @@ RSpec.describe Post, type: :model do
       )
   
       user.posts.create(
-        name: "Test post",
+        title: "Test post",
       )
   
       other_user = User.create(
@@ -40,7 +40,7 @@ RSpec.describe Post, type: :model do
       )
   
       other_post = other_user.posts.build(
-        name: "Test post",
+        title: "Test post",
       )
       
   
