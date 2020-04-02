@@ -71,4 +71,3 @@ RSpec.describe Post, type: :model do
     #   expect(other_post).to_not be_valid
     # end
 
-end
