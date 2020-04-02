@@ -29,15 +29,13 @@ RSpec.describe User, type: :model do
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email address" do
     User.create(
-      first_name: "Joe",
-      last_name: "Tester",
+      name: "Joe",
       email: "tester@example.com",
       password: "dottle-nouveau-pavilion-tights-furze",
     )
 
     user = User.new(
-      first_name: "Jane",
-      last_name: "Tester",
+      name: "Jane",
       email: "tester@example.com",
       password: "dottle-nouveau-pavilion-tights-furze",
     )
