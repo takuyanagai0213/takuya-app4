@@ -1,9 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   mount_uploader :picture, PictureUploader
-  validates :title, presence: true, length: { maximum: 30 },
-                    uniqueness: { scope: :title,
-                    message: "タイトルが同じである投稿はできません。" }
+  validates :title, presence: true, length: { maximum: 30 }
   validates :detail, presence: true, length: { maximum: 300 }
   validates :picture, presence: true
   validate :picture_size
