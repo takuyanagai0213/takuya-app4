@@ -15,7 +15,7 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:title]).to include("can't be blank")
     end
 
-    it 'is valid with title and content' do
+    it 'is invalid with detail' do
       user = User.create(
         name: "Joe",
         email: "joetester@example.com",
@@ -23,24 +23,10 @@ RSpec.describe Post, type: :model do
       )
 
       post = user.posts.build(
-         content: nil,
+         detail: nil,
          )
       post.valid?
-      expect(post.errors[:content]).to include("can't be blank")
-    end
-
-    it 'is valid with title and content' do
-      user = User.create(
-        name: "Joe",
-        email: "joetester@example.com",
-        password: "dottle-nouveau-pavilion-tights-furze",
-      )
-
-      post = user.posts.build(
-         title: nil,
-         )
-      post.valid?
-      expect(post.errors[:title]).to include("can't be blank")
+      expect(post.errors[:detail]).to include("can't be blank")
     end
   end
 
