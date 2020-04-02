@@ -18,7 +18,7 @@ RSpec.describe Post, type: :model do
       )
   
       new_post.valid?
-      expect(new_post.errors[:title]). include("has already been taken")
+      expect(new_post.errors[:title]).to include("has already been taken")
     end
   
     # 二人のユーザーが同じ名前を使うことは許可すること
