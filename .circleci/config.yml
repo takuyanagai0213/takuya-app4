@@ -70,9 +70,9 @@ jobs:
       #     command: |
       #       gem update --system
       #       gem install bundler
-      # - run:
-      #     name: bundle installを実行
-      #     command: bundle install --path=vendor/bundle
+      - run:
+          name: bundle installを実行
+          command: bundle install
       - run: 
           name: Capistrano deploy
           command: 
