@@ -74,7 +74,7 @@ jobs:
       #     name: bundle installを実行
       #     command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
 
-      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && bundle exec cap production deploy'
+      #- run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && bundle exec cap production deploy'
 
       # テストが成功した場合のみ、デプロイを実行
 workflows:
