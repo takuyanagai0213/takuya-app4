@@ -47,6 +47,8 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -86,5 +88,3 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'omniauth-google-oauth2'
 #gem 'sshkit', '1.4.0'
-
-#gem 'factory_bot_rails'

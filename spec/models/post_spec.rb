@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
     it 'is invalid with title' do
-      user = User.create(
-        name: "Joe",
-        email: "joetester@example.com",
-        password: "dottle-nouveau-pavilion-tights-furze",
-      )
+      user = FactoryBot.create(:user)
 
       post = user.posts.build(
          title: nil,
@@ -16,11 +12,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'is invalid with detail' do
-      user = User.create(
-        name: "Joe",
-        email: "joetester@example.com",
-        password: "dottle-nouveau-pavilion-tights-furze",
-      )
+      user = FactoryBot.create(:user)
 
       post = user.posts.build(
          detail: nil,
