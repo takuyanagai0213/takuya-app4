@@ -65,7 +65,10 @@ jobs:
          fingerprints:
           - "6e:d4:25:40:1a:4b:5f:39:d7:27:3d:ea:e0:a5:00:23"
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull -f origin master'
-　　　 - run: bundle exec cap production deploy
+      - run: 
+          name: Capistrano deploy
+          command: 
+            bundle exec cap production deploy
       # テストが成功した場合のみ、デプロイを実行
 workflows:
   version: 2
