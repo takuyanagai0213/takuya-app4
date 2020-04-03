@@ -49,6 +49,7 @@ group :development, :test do
   gem 'bcrypt_pbkdf'
   gem 'factory_bot_rails'
   gem 'database_cleaner'
+  gem 'rubocop', '~> 0.55.0', require: false
 end
 
 group :development do
