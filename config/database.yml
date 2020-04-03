@@ -70,3 +70,4 @@ production:
    username: admin
    password: password
    host: <%= ENV['AWS_RDS_ENDPOINT'] %>
+   socket: /var/lib/mysql/mysql.sock
