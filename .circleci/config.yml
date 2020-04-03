@@ -72,7 +72,7 @@ jobs:
             gem install bundler
       - run:
           name: bundle installを実行
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+          command: bundle install --path=vendor/bundle
       - run: 
           name: Capistrano deploy
           command: 
