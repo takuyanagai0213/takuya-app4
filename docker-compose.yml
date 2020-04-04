@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    container_name: local-mysql
     image: mysql:5.7
     volumes:
       - ./db/mysql_data:/var/lib/mysql
@@ -9,8 +10,11 @@ services:
       MYSQL_DATABASE: root
     ports:
       - "3306:3306"
+    networks:
+      - app-net
 
   web:
+    container_name: "local-application"
     build: .
     command: rails s -p 3000 -b '0.0.0.0'
     volumes:
@@ -21,3 +25,9 @@ services:
       - db
     links:
       - db
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
