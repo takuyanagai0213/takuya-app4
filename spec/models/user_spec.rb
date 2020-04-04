@@ -22,16 +22,16 @@ RSpec.describe User, type: :model do
 
   # パスワードがなければ無効な状態であること
   it "is invalid without an password" do
-    user = FactoryBot.build(:user, password: 'test')
+    user = FactoryBot.build(:user, password: nil )
     user.valid?
     expect(user.errors[:password]).to include("can't be blank")
   end
-  
+
   # パスワードが6文字以上出なければ無効な状態であること
   it "is invalid if password is less 6 characters" do
     user = FactoryBot.build(:user, password: 'test')
     user.valid?
-    expect(user.errors[:password]).to include("Password is too short")
+    expect(user.errors[:password]).to include(" is too short")
   end
 
   # 重複したメールアドレスなら無効な状態であること
