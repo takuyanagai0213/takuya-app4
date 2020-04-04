@@ -8,7 +8,7 @@ RSpec.describe Post, type: :model do
          title: nil,
          )
       post.valid?
-      expect(post.errors[:title]).to include("can't be blank")
+      expect(post.errors[:title]).to include("を入力してください")
     end
 
     it 'is invalid with detail' do
@@ -18,7 +18,7 @@ RSpec.describe Post, type: :model do
          detail: nil,
          )
       post.valid?
-      expect(post.errors[:detail]).to include("can't be blank")
+      expect(post.errors[:detail]).to include("を入力してください")
     end
   end
 
