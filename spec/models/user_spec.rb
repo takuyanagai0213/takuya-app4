@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
   it "is invalid if password is less 6 characters" do
     user = FactoryBot.build(:user, password: 'test')
     user.valid?
-    expect(user.errors[:password]).to include(" is too short")
+    expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
   end
 
   # 重複したメールアドレスなら無効な状態であること
