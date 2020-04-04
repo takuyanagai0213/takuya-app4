@@ -20,10 +20,17 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email]).to include("can't be blank")
   end
 
+  # パスワードがなければ無効な状態であること
+  it "is invalid without an email address" do
+    user = FactoryBot.build(:user, password: 'test')
+    user.valid?
+    expect(user.errors[:password]).to include("minimum is 6 characters")
+  end
+
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email address" do
-    FactoryBot.create(:user, email: "aaron@example.com")
-    user = FactoryBot.build(:user, email: "aaron@example.com")
+    FactoryBot.create(:user, email: "test@example.com")
+    user = FactoryBot.build(:user, email: "test@example.com")
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
