@@ -68,7 +68,9 @@ jobs:
           - "6e:d4:25:40:1a:4b:5f:39:d7:27:3d:ea:e0:a5:00:23"
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull -f origin master'
       - run:
-        bundle exec cap production deploy
+      - run:
+          name: 自動デプロイを実行
+          command: bundle exec cap production deploy
       # - deploy:  
       #     name: Deploy with Capistrano  
       #     command: bundle exec cap production deploy  
