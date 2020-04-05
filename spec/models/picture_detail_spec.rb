@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Picture_detail, type: :model do
+RSpec.describe PictureDetail, type: :model do
     
     # 詳細画像がなければ無効な状態であること
     it 'is invalid with image1' do
