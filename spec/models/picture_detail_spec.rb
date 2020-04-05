@@ -1,0 +1,11 @@
+require 'rails_helper'
+
+RSpec.describe Picture_detail, type: :model do
+    
+    # 詳細画像がなければ無効な状態であること
+    it 'is invalid with image1' do
+      post = FactoryBot.build(:picture_detail, image1: nil,)
+      post.valid?
+      expect(post.errors[:image1]).to include("を入力してください")
+    end
+  end

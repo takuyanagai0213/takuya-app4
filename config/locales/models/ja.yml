@@ -15,3 +15,9 @@ ja:
         title: タイトル
         detail: 釣行レポート
         picture: タイトル画像
+        
+    models:
+      picture_detail: 詳細画像
+    attributes:
+      picture_detail:
+        image1: 詳細画像
