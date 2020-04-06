@@ -56,37 +56,26 @@ jobs:
           command: bundle exec rspec
       - store_test_results:
           path: /tmp/test-results
-    # EC2にSSH接続し、デプロイを実行
   deploy:
-    machine:
-      image: circleci/classic:edge
+    working_directory: ~/takuya-app4
     steps:
       - checkout
-      # CircleCIに登録した秘密鍵を呼び出す。
-      - add_ssh_keys:
-         fingerprints:
-          - "6e:d4:25:40:1a:4b:5f:39:d7:27:3d:ea:e0:a5:00:23"
-      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull  origin master'
-      # - run:
-      # # - run:
-      # #     name: 自動デプロイを実行
-      # #     command: bundle exec cap production deploy
-      # - deploy:  
-      #     name: Deploy with Capistrano  
-      #     command: bundle exec cap production deploy  
-      
-      # - run:
-      #     name: bundlerをinstall
-      #     command: |
-      #       gem update --system
-      #       gem install bundler
-      # - run:
-      #     name: bundle installを実行
-      #     command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - run: bundle install --path vender/bundle
+      - run: bundle exec rails deploy
 
-      #- run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && bundle exec cap production deploy'
+    # EC2にSSH接続し、デプロイを実行
+  # deploy:
+  #   machine:
+  #     image: circleci/classic:edge
+  #   steps:
+  #     - checkout
+  #     # CircleCIに登録した秘密鍵を呼び出す。
+  #     - add_ssh_keys:
+  #        fingerprints:
+  #         - "6e:d4:25:40:1a:4b:5f:39:d7:27:3d:ea:e0:a5:00:23"
+  #     - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull origin master'
 
-      # テストが成功した場合のみ、デプロイを実行
+# テストが成功した場合のみ、デプロイを実行
 workflows:
   version: 2
   build-deploy:
