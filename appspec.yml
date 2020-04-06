@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /
     destination: /var/www/rails/takuya-app4
+    overwrite: true
 hooks:
   ApplicationStop:
     - location: scripts/restart_server
