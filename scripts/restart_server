@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo kill -HUP `cat /var/www/rails/takuya-app4/tmp/pids/unicorn.pid`
+
+sudo nginx -s reload
