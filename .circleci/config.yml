@@ -56,8 +56,11 @@ jobs:
           command: bundle exec rspec
       - store_test_results:
           path: /tmp/test-results
+
   deploy:
     working_directory: ~/takuya-app4
+    docker:
+      - image: ruby:2.4.0
     steps:
       - checkout
       - run: bundle install --path vender/bundle
