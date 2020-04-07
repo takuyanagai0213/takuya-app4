@@ -34,3 +34,6 @@ FishingShares は、以下の技術を使用しています。
 - Capistrano
 - Terraform
 
+## インフラ構成図
+<img width="764" alt="06ac65cca9b02b77dee6909fe0a25bed" src="https://user-images.githubusercontent.com/59494906/78553012-80f67980-7843-11ea-8fdf-bbaca4d3c6d6.png">
+
