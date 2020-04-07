@@ -2,6 +2,9 @@
 
 FishingShares は釣りの画像や釣行レポートを共有することができるSNSサービスです。
 
+## リンク
+https://fishingshares.com/
+
 ## 何ができるのか？（機能）
 FishingShares は、以下のことができます。
 <br>→既存のサービスで実装されていない機能には⭐️を付けています。
@@ -22,7 +25,7 @@ FishingShares は、以下の技術を使用しています。
 - Rails
 - docker（開発環境に導入）
 - AWS EC2インスタンスでデプロイ
-　→Webサーバにnginx、アプリケーションサーバにunicornを使用
+　<br>→Webサーバにnginx、アプリケーションサーバにunicornを使用
 - AWS S3
 - GoogleMap API
 - MySQL
