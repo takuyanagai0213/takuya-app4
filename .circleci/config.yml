@@ -96,7 +96,6 @@ workflows:
           filters:
             branches:
               only: master
-    jobs:
       - aws-code-deploy/deploy:
           application-name: fishingshares
           #bundle-bucket: myApplicationS3Bucket
