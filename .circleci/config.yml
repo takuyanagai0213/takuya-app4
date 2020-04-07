@@ -60,7 +60,7 @@ jobs:
   deploy:
     working_directory: ~/takuya-app4
     docker:
-      - image: ruby:2.4.0
+      - image: ruby:2.5.3
     steps:
       - checkout
       - run: bundle install --path vender/bundle
