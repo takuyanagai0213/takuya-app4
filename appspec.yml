@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /takuya-app4
-    destination: /var/www/rails/
+  - source: /
+    destination: /var/www/rails/takuya-app4
     overwrite: true
 hooks:
   ApplicationStop:
