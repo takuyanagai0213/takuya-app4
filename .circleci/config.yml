@@ -59,6 +59,12 @@ jobs:
 
   deploy:
     working_directory: ~/takuya-app4
+      - aws-code-deploy/deploy:
+          application-name: fishingshares
+          #bundle-bucket: myApplicationS3Bucket
+          #bundle-key: myS3BucketKey
+          deployment-group: fishingshares-deploygroup	
+          service-role-arn: fishingshares_codedeploy
     docker:
       - image: cdssnc/aws-cli
     steps:
@@ -96,9 +102,3 @@ workflows:
           filters:
             branches:
               only: master
-      - aws-code-deploy/deploy:
-          application-name: fishingshares
-          #bundle-bucket: myApplicationS3Bucket
-          #bundle-key: myS3BucketKey
-          deployment-group: fishingshares-deploygroup	
-          service-role-arn: fishingshares_codedeploy
