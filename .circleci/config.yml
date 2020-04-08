@@ -60,7 +60,7 @@ jobs:
   deploy: #デプロイするジョブ
     working_directory: ~/my-app
     docker:
-    - image: ruby:2.4.0
+    - image: ruby:2.5.3
     steps:
       - checkout
       - run: bundle install --path vendor/bundle
