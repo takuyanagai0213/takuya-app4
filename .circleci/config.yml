@@ -63,7 +63,7 @@ jobs:
     - image: ruby:2.5.3
     steps:
       - checkout
-      - run: bundle install --path vendor/bundle
+      # - run: bundle install --path vendor/bundle
       - run: bundle exec rake deploy
 
     # EC2にSSH接続し、デプロイを実行
