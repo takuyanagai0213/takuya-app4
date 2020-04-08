@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   mount_uploader :picture, PictureUploader
   validates :title, presence: true, length: { maximum: 30 }
   validates :detail, presence: true, length: { maximum: 300 }
