@@ -4,14 +4,17 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   
   def index
+    @categories = Category.all
     @users = User.order(id: :desc).page(params[:page]).per(5)
   end
 
   def show
     @user = User.find(params[:id])
+    @categories = Category.all
   end
 
   def new
+    @categories = Category.all
     @user = User.new
   end
 
@@ -28,6 +31,7 @@ class UsersController < ApplicationController
   end
   
   def edit
+    @categories = Category.all
     @user = User.find(params[:id])
   end
   

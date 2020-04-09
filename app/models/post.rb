@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   has_many :picture_details, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmark, dependent: :destroy
+  has_many :post_category_relations
+  has_many :categories, through: :post_category_relations
   geocoded_by :address, latitude: :latitude, longitude: :longitude
   after_validation :geocode, if: :address_changed?
 

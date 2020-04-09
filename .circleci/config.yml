@@ -57,14 +57,14 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
 
-  deploy: #デプロイするジョブ
-    working_directory: ~/my-app
-    docker:
-    - image: ruby:2.5.3
-    steps:
-      - checkout
-      # - run: bundle install --path vendor/bundle
-      - run: bundle exec rake deploy
+  # deploy: #デプロイするジョブ
+  #   working_directory: ~/my-app
+  #   docker:
+  #   - image: ruby:2.5.3
+  #   steps:
+  #     - checkout
+  #     - run: bundle install --path vendor/bundle
+  #     - run: bundle exec rake deploy
 
     # EC2にSSH接続し、デプロイを実行
   # deploy:

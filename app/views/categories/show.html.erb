@@ -1,0 +1,23 @@
+<% if @posts.empty? %>
+  <p>このカテゴリには投稿がありません</p>
+<% else %>
+  <% @posts.each do |post| %>
+    <li class="card">
+      <div class="card-header">
+        <h4><%= link_to "#{post.title}", post_path(post) %></h4>
+      </div>
+      
+      <div class="card-body">
+        <div class="">
+          <%= image_tag post.picture.url if post.picture? %>
+        </div>
+        
+        <div class="text-right">
+          <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+  
