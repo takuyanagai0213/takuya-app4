@@ -14,105 +14,41 @@
  *= require_self
  */
 
- .channel-menu {
-    position: fixed;
-    top: 0;
-    @media screen and (max-width: 600px) {
-      position: inherit;
-      margin-left: 0;
-    }
-  }
-  
-  .channel-menu_name {
-    display: inline-block;
-    padding: 0 0.5rem 0 1.5rem;
-    color: #555459;
-    font-size: 1.4rem;
-    font-weight: 900;
-    line-height: 53px;
-    cursor: pointer;
-    @media screen and (max-width: 600px) {
-      padding-left: 0;
-    }
-  }
-  .channel_name .prefix {
-    margin-right: 8px;
-  }
-  
-  .channel-menu_prefix {
-    padding-right: 0.5rem;
-    font-weight: 500;
-  }
-  .channel-menu_date {
-    font-weight: bold;
-  }
-  .channel-menu h3 {
-    float: right;
-    padding-right: 0.1rem;
-    font-weight: 500;
-  }
-  .listings {
-    min-height: 100vh;
-    height: 100%;
-    width: 220px;
-    float: left;
-    color: #ab9ba9;
-    background-color: #93d1d8;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 10;
-    @media screen and (max-width: 600px) {
-      display: none;
-      position: absolute;
-      &.show {
-        display: block;
-      }
-    }
-  }
-  
-  .listings_channels {
-    margin: 1rem 0 2rem;
-  }
-  
-  .listings_header {
-    text-align: left;
-    font-size: 0.8rem;
-    line-height: 1.25rem;
-    margin: 0 1rem 0.1rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #ab9ba9;
-    width: 165px;
-    position: relative;
-  }
-  
-  .channel_list {
-    padding: 0;
-    list-style-type: none;
-    text-align: left;
-    color: #ab9ba9;
-  }
-  
-  .channel {
-    height: 24px;
-    line-height: 24px;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-    padding-right: 17px;
-    color: #ffffff;
-    padding-left: 1rem;
-    a {
-      color: #ddd;
-      text-decoration: none;
-      width: 100%;
-      display: inline-block;
-    }
-    a:hover {
-      color: #eee;
-    }
-  }
-  
-  .channel.active {
-    background: #4c9689;
-  }
-  
+.panel-primary {
+  background-color: rgb(216, 238, 238);
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold 3px rgb(224, 201, 201);
+  border: solid 3px rgb(182, 208, 224);
+}
+.panel-heading {
+  background-color: blue($color: #ddc1c1);
+}
+
+.panel-title {
+  background-color: blue($color: #4e1515);
+}
+
+.panel-body {
+  margin: 5px;
+  font-size: 17px;
+}
+
+h2 {
+  background-color: rgb(223, 223, 128);
+  margin: 5px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.panel-primary1 {
+  background-color: rgb(157, 201, 226);
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold 3px rgb(224, 201, 201);
+  border: solid 3px rgb(182, 208, 224);
+}
+.panel-primary-left {
+  margin: 5px;
+}

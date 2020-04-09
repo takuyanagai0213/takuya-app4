@@ -20,14 +20,17 @@
   <body>
     <%= render 'layouts/navbar' %>
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 offset-1">
         <%= render 'layouts/sidebar' %>
       </div>
-      <div class="col-8">
+      <div class="col-7">
         <div class="container">
           <%= render 'layouts/flash_messages' %>
           <%= yield %>
         </div>
+      </div>
+      <div class="col-2">
+        <%= render 'layouts/sidebarleft' %>
       </div>
     </div>
     <script>

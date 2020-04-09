@@ -1,8 +1,39 @@
-<div class="listings">
-		<h2 class="listings_header">カテゴリ一覧</h2>
-		<ul class="channel_list">
-		<% @categories.each do |category| %>
-			<li><%= link_to "#{category.name}", category_path(category) %></li>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">魚種のカテゴリ一覧</h2>
+  </div>
+	<% @categories.each do |category| %>
+  <div class="panel-body">
+		<%= link_to "#{category.name}", category_path(category) %>
+	</div>
 		<% end %>
-		</ul>
+</div>
+<div class="panel panel-primary1">
+  <div class="panel-heading">
+    <h2 class="panel-title">釣果エリア一覧</h2>
+  </div>
+	<div class="panel-body">
+		<%= link_to "北海道", root_path() %>
+	</div>
+	<div class="panel-body">	
+		<%= link_to "東北", root_path() %>
+	</div>
+	<div class="panel-body">
+		<%= link_to "関東", root_path() %>
+	</div>
+	<div class="panel-body">
+		<%= link_to "中部", root_path() %>
+	</div>
+	<div class="panel-body">
+		<%= link_to "近畿", root_path() %>
+	</div>
+	<div class="panel-body">
+		<%= link_to "中国", root_path() %>
+	</div>
+	<div class="panel-body">	
+		<%= link_to "九州", root_path() %>
+	</div>
+	<div class="panel-body">
+		<%= link_to "沖縄", root_path() %>
+	</div>
 </div>
