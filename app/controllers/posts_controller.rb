@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in,  only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :category_all
+  
   def index
   end
   def new
-    @categories = Category.all
     @post = current_user.posts.build
   end
   
   def show
-    @categories = Category.all
     @post = Post.find(params[:id])
     @comments = @post.comments.all
     @pictures = @post.picture_details.order(id: :desc)
