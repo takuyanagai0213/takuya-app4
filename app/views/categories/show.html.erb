@@ -1,6 +1,9 @@
 <% if @category_posts.empty? %>
   <p>このカテゴリには投稿がありません</p>
 <% else %>
-  <%= render 'posts/posts', posts: @posts %>
+  <div class="content">
+    <h2><%= @category.name %>に関する投稿一覧</h2>
+    <%= render 'categories/posts', posts: @posts %>
+  </div>
 <% end %>
   
