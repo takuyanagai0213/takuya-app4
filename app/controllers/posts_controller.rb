@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
   end
+
   def new
     @post = current_user.posts.build
   end
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       @posts = current_user.posts.order(id: :desc).page(params[:page])
+      @categories = Category.all
       flash.now[:danger] = '釣果の投稿に失敗しました。'
       render 'posts/new'
     end
