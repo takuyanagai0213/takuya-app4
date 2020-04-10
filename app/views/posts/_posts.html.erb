@@ -4,10 +4,16 @@
       <h4><%= link_to "#{post.title}", post_path(post) %></h4>
     </div>
     <div class="card-body">
-      <img src="<%= post.picture.url %>" class="img-fluid">
-      <div class="text-right">
-        <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
-        <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+      <div class="row">
+        <div class="col-4">
+          <img src="<%= post.picture.url %>" class="img-fluid">
+        </div>
+        <div class="col-8">
+          <div class="text-right">
+            <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
+            <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+          </div>
+        </div>
       </div>
     </div>
   </li>
