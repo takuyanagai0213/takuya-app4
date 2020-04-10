@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in,  only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :category_all
-  
+
   def index
   end
   def new

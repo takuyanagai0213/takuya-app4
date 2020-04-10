@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :category_all
+
   include SessionsHelper
   include UsersHelper
   

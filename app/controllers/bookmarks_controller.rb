@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :require_user_logged_in
+
   def index
-    @categories = Category.all
     @bookmarks = current_user.addbookmark.all
   end
   
