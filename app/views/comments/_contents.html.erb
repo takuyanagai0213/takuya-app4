@@ -16,7 +16,7 @@
 <div class="m-3">
   <% if logged_in? %>
     <div class="col-md-6">
-        <%= render 'comments/from' %>
+        <%= render 'comments/form' %>
     </div>
   <% else %>
     <%= link_to 'ログインをしてコメントをしよう！', login_path, class: 'btn btn-primary' %>
