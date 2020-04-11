@@ -1,15 +1,23 @@
 ja:
   activerecord:
     models:
-      user: ユーザ
+      event: イベント
     attributes:
-      user:
-        name: 名前
-        email: メールアドレス
-        password: パスワード
-    
+      event:
+        name: イベント名
+        place: 開催場所
+        content: イベント内容
+
+ja:
+  activerecord:
     models:
-      post: 投稿
+      picture_detail: 詳細画像
+    attributes:
+      picture_detail:
+        image1: 詳細画像
+
+    models:
+      post: 詳細画像
     attributes:
       post:
         title: タイトル
@@ -17,7 +25,9 @@ ja:
         picture: タイトル画像
         
     models:
-      picture_detail: 詳細画像
+      user: ユーザ
     attributes:
-      picture_detail:
-        image1: 詳細画像
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
