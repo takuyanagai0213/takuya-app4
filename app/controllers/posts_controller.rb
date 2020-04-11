@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
+    @categories = Category.all
     if @post.save
       flash[:success] = '釣果を投稿しました。'
       redirect_to root_url
