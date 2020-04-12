@@ -1,4 +1,13 @@
 #!/bin/bash
+
+# マイグレーションを実行
+rails db:migrate RAILS_ENV=production
+
+#assetsを反映する
+rails assets:precompile RAILS_ENV=production
+
+# unicormサーバの再起動
 sudo kill -HUP `cat /var/www/rails/takuya-app4/tmp/pids/unicorn.pid`
 
+# nginxサーバの再読み込み
 sudo nginx -s reload
