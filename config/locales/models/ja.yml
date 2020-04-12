@@ -1,21 +1,10 @@
 ja:
   activerecord:
     models:
-      event: イベント
-    attributes:
-      event:
-        name: イベント名
-        place: 開催場所
-        content: イベント内容
-
-ja:
-  activerecord:
-    models:
       picture_detail: 詳細画像
     attributes:
       picture_detail:
         image1: 詳細画像
-
     models:
       post: 詳細画像
     attributes:
@@ -23,7 +12,6 @@ ja:
         title: タイトル
         detail: 釣行レポート
         picture: タイトル画像
-        
     models:
       user: ユーザ
     attributes:

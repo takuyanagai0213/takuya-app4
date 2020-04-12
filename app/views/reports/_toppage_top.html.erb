@@ -6,12 +6,12 @@
             </div>        
         </div>
         <div class="col-9">
+        <% @reports.each do |report| %>
             <div class="reports2">
-                <% @reports.each do |report| %>
-                    <p><%= report.created_at.to_s(:published_on) %></p>
-                    <p><%= report.content %></p>
-                <% end %>
+                <p><%= report.created_at.to_s(:published_on) %></p>
+                <p><%= report.content %></p>
             </div>
+        <% end %>
         </div>
     </div>
 </div>
