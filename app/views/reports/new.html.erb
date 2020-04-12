@@ -1,0 +1,8 @@
+<%= form_with(model: @report, local: true) do |f| %>
+    <%#= render 'layouts/error_messages', model: f.object %>
+  <div class="form-group">    
+    <%= f.label :content, 'お知らせ内容' %>
+    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+  </div>
+    <%= f.submit 'お知らせを投稿する', class: 'btn btn-primary btn-block' %>
+<% end %>

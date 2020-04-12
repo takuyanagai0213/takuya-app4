@@ -8,6 +8,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav" style="font-size: 20px">
          <% if logged_in? %>
+         <% if current_user.admin? %> 
+          <li class="nav-item"><%= link_to 'お知らせ投稿', new_report_path(@reports), class: 'nav-link' %></li>
+         <% end %>
           <li class="nav-item"><%= link_to '釣果投稿', new_post_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: 'nav-link' %></li>
           <li class="nav-item dropdown">

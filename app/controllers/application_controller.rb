@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :category_all
+  before_action :information_all
 
   include SessionsHelper
   include UsersHelper
@@ -8,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   def category_all
     @categories = Category.all
+  end
+
+  def information_all
+    @reports = Report.all
   end
 
   def require_user_logged_in

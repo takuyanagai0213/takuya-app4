@@ -1,0 +1,17 @@
+<div class="toppage_top">
+    <div class="row">
+        <div class="col-3">
+            <div class="reports1">
+                <p>お知らせ</p>
+            </div>        
+        </div>
+        <div class="col-9">
+            <div class="reports2">
+                <% @reports.each do |report| %>
+                    <p><%= report.created_at.to_s(:published_on) %></p>
+                    <p><%= report.content %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
