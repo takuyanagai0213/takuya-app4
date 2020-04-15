@@ -1,2 +1,6 @@
 
 /* linguist-vendored
+
+*.rb linguist-language=Ruby
+
+mysql_data/* linguist-vendored=false 
