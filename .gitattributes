@@ -1,3 +1,3 @@
 
 *.rb linguist-language=Ruby
-/db/mysql_data/* linguist-documentation
+fishingshares/db/mysql_data/* linguist-documentation
