@@ -10,21 +10,21 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
   </head>
-  <body>
+    <body>
     <%= render 'layouts/navbar' %>
     <div class="container">
-      <%= render 'reports/toppage_top' %>
+    <%= render 'reports/toppage_top' %>
     </div>
     <div class="row">
       <div class="col-2 offset-1">
-        <%= render 'layouts/sidebar' %>
+        <%= render 'layouts/leftsidebar' %>
       </div>
       <div class="col-6">
         <div class="container">
@@ -32,8 +32,8 @@
           <%= yield %>
         </div>
       </div>
-      <div class="col-2 offset-right-1">
-        <%= render 'layouts/sidebarleft' %>
+      <div class="col-2">
+        <%= render 'layouts/rightsidebar' %>
       </div>
     </div>
     <script>
@@ -46,20 +46,7 @@
     });
     </script>
   </body>
-  <footer class="page-footer font-small pt-3" style="background-color: #e3f2fd;">
-    <div class="container-fluid text-center">
-      <div class="text-center　mb-2">
-        <div class="row">
-          <div class="col-md">
-            <%= link_to 'ホーム', root_url, class: 'h6 m-3' %>
-            <%= link_to 'よくある質問', root_url, class: 'h6 m-3' %>
-            <%= link_to 'お問い合わせ', root_url, class: 'h6 m-3' %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright text-center py-2">© 2020 Copyright:
-      <a href="https://www.wantedly.com/users/127326700">Takuya Nagai</a>, All Rights Reserved.
-    </div>
+  <footer class="page-footer font-small">
+    <%= render 'layouts/footer' %>
   </footer>
 </html>
