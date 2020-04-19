@@ -1,16 +1,15 @@
-<header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" style="font-size: 40px" href="/">Fishing Shares</a><i class="fas fa-fish" style="font-size: 60px"></i>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-sm navbar-light">
+  <a class="navbar-brand" href="/">Fishing Shares</a><i class="fas fa-fish"></i>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav" style="font-size: 20px">
-         <% if logged_in? %>
-         <% if current_user.admin? %> 
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <% if logged_in? %>
+        <% if current_user.admin? %> 
           <li class="nav-item"><%= link_to 'お知らせ投稿', new_report_path(@reports), class: 'nav-link' %></li>
-         <% end %>
+        <% end %>
           <li class="nav-item"><%= link_to '釣果投稿', new_post_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: 'nav-link' %></li>
           <li class="nav-item dropdown">
@@ -23,10 +22,9 @@
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>
           </li>
-        <% else %>
-          <li class="nav-item"><%= link_to '釣れた魚をシェアする', login_path, class: 'nav-link' %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</header>
+      <% else %>
+        <li class="nav-item"><%= link_to '釣れた魚をシェアする', login_path, class: 'nav-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

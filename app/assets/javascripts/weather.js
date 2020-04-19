@@ -32,10 +32,16 @@ $(function weaher() {
         var icon = data.list[i].weather[0].icon;
         var html =
         '<div class="weather-report">' +
-          '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
-          '<div class="weather-date">' + day + '</div>' +
-          '<div class="weather-main">'+ data.list[i].weather[0].main + '</div>' +
-          '<div class="weather-temp">' + Math.round(data.list[i].main.temp) + '℃</div>' +
+          '<div class="row">' +
+            '<div class="col-3">' +
+              '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+            '</div>' +
+            '<div class="col-9">' +
+              '<div class="weather-date">' + day + '</div>' +
+              '<div class="weather-main">'+ data.list[i].weather[0].main + '</div>' +
+              '<div class="weather-temp">' + Math.round(data.list[i].main.temp) + '℃</div>' +
+            '</div>' +
+          '</div>' +
         '</div>';
         return html
     }

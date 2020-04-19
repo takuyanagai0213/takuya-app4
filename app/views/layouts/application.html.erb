@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= favicon_link_tag('fish.ico') %>
     <title>Fishing Shares</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,34 +18,31 @@
     <script src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
   </head>
-    <body>
-    <%= render 'layouts/navbar' %>
+  <body>
+    <header class="mb-4">
+      <%= render 'layouts/navbar' %>
+    </header>
+
     <div class="container">
-    <%= render 'reports/toppage_top' %>
+      <%= render 'reports/toppage_top' %>
     </div>
+
     <div class="row">
       <div class="col-2 offset-1">
         <%= render 'layouts/leftsidebar' %>
       </div>
+    
       <div class="col-6">
-        <div class="container">
-          <%= render 'layouts/flash_messages' %>
-          <%= yield %>
-        </div>
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
       </div>
-      <div class="col-2">
+
+      <div class="col-2 offset-right-1">
         <%= render 'layouts/rightsidebar' %>
       </div>
     </div>
-    <script>
-        $(function(){
-	    $('.bxslider').bxSlider({
-		      auto: true,
-		      slideWidth: 450,
-		      minSlides: 3
-	    });
-    });
-    </script>
+
+    <%= javascript_include_tag 'slider.js' %>
   </body>
   <footer class="page-footer font-small">
     <%= render 'layouts/footer' %>

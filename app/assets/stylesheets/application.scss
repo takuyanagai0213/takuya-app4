@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ body {
+   background-color: rgb(253, 253, 253);
+ }
+
+
 .panel-primary {
   background-color: rgb(216, 238, 238);
   border-radius: 5px;
@@ -35,7 +40,7 @@
 }
 
 h2 {
-  background-color: rgb(223, 223, 128);
+  background-color: rgb(235, 235, 152);
   margin: 5px;
   border-radius: 2px;
   text-align: center;
@@ -68,18 +73,41 @@ h2 {
 
 .city-name {
   h3 {
-    background-color: rgb(170, 235, 96);
+    background-color: rgb(232, 241, 222);
+    border-radius: 5px;
     text-align: center;
-    margin: 3px;
+    margin: 10px;
+    padding: 3px;
   }
 }
 .weather-report {
-    font-size: 10px;
-    margin: 5px;
+    font-size: 12px;
+    margin: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgb(149, 200, 207);
 }
 
 .right-sidebar {
-  border: solid 3px rgb(182, 208, 224);
+  // border: solid 3px rgb(182, 208, 224);
   border-radius: 5px;
+  box-shadow: 0 0 5px rgb(149, 200, 207);
 
+}
+
+.navbar {
+  background-color: #b4e5f8;
+  
+  .fa-fish{
+    font-size: 60px
+  }
+}
+
+.navbar-brand {
+  font-size: 40px
+}
+
+
+.navbar-nav {
+  font-size: 20px
 }
