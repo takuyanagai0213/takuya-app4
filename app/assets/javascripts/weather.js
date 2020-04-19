@@ -1,7 +1,7 @@
 $(function weaher() {
     var API_KEY = 'a4f2d8bc04664f59ae2742f8ffcd6635'
     var city = 'Tokyo';
-    var url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+    var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
     $.ajax({
       url: url,
       dataType: "json",
