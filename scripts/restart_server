@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 'bandle install'を実行
+bandle install
+
 # マイグレーションを実行
 rails db:migrate RAILS_ENV=production
 
