@@ -1,6 +1,14 @@
-<%= render 'bookmarks/contents' %>
-<%= render 'posts/contents' %>
-<%= render 'comments/contents' %>
+<div class="bookmark-content">
+  <%= render 'bookmarks/contents' %>
+</div>
+
+<div class="post-content">
+  <%= render 'posts/contents' %>
+</div>
+
+<div class="comments">
+  <%= render 'comments/contents' %>
+</div>
 
 <div class="text-right">
   <% if current_user?(@post.user) %>
