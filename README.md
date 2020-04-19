@@ -17,7 +17,7 @@ FishingShares は、以下のことができます。
 - お知らせ機能
 - 記事の詳細ページで、釣れた場所（GoogleMapにて）を確認できる
 - 記事にコメントをする
-- 記事をブックマーク（お気に入りに追加）する
+- 記事をブックマーク（お気に入りに追加）する⭐️
 
 ## どのように作られているか？（技術）
 FishingShares は、以下の技術を使用しています。
@@ -28,7 +28,7 @@ FishingShares は、以下の技術を使用しています。
 - docker（開発環境に導入）
 - AWS EC2インスタンスでデプロイ
 　<br>→Webサーバにnginx、アプリケーションサーバにunicornを使用
-- AWS (RDS, S3, Certificate Manager, Route 53)
+- AWS (RDS, S3, ACM, ALB, Route 53)
 - AWS CodeDeploy(自動デプロイ)
 - GoogleMap API
 - OpenWeatherMap API(天気予報の表示)
