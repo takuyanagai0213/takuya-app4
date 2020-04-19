@@ -1,17 +1,23 @@
 <div class="text-center">
-  <h1>ログイン</h1>
+  <h1>テストユーザログイン</h1>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <%= f.hidden_field :email, value: 'test@example.com' %>
+    <%= f.hidden_field :password, value: 'testpass' %>
+    <%= f.submit 'テストログイン', class: 'btn btn-outline-success' %>
+  <% end %>
 </div>
-
-<div class="row">
+  
+  
+<div class="text-center">
+  <h1>通常ログイン</h1>
   <div class="col-sm-6 offset-sm-3">
-
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
       <%#= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">  
         <%= f.label :email, 'Email' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
-
+      
       <div class="form-group">
         <%= f.label :password, 'パスワード' %>
         <%= f.password_field :password, class: 'form-control' %>
@@ -21,10 +27,10 @@
         <%= f.check_box :remember_me %>
         <span>ログイン状態を保持する</span>
       <% end %>
-      
+        
       <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
     <% end %>
-
+      
     <p>アカウント登録はお済ですか？ <%= link_to '新規登録', signup_path %></p>
   </div>
 </div>
