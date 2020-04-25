@@ -1,0 +1,8 @@
+<%= form_with(model: @category, local: true) do |f| %>
+    <div class="form-group">    
+        <%= f.label :name, 'カテゴリ名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <%= f.submit 'カテゴリを追加する', class: 'btn btn-primary btn-block' %>
+<% end %>
+

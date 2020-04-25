@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   
-  resources :reports, only: [:new, :create, :edit, :update, :destroy]
+  resources :reports, only: [:new, :create]
   resources :picture_details, only: [:index, :new, :create]
-  resources :categories, only: [:show]
+  resources :categories, only: [:new, :show, :create]
   resources :bookmarks, only: [:index, :create, :destroy]
 end
