@@ -3,7 +3,7 @@
 <% else %>
   <div class="content">
     <h2><%= @category.name %>に関する投稿一覧</h2>
-    <%= render 'categories/posts', posts: @posts %>
+    <%= render 'categories/posts', posts: @category_posts %>
   </div>
 <% end %>
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_080732) do
+ActiveRecord::Schema.define(version: 2020_04_13_111306) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_080732) do
   add_foreign_key "comments", "users"
   add_foreign_key "picture_details", "posts"
   add_foreign_key "pictures", "posts"
+  add_foreign_key "post_category_relations", "categories"
   add_foreign_key "post_category_relations", "posts"
   add_foreign_key "posts", "users"
 end

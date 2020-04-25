@@ -40,6 +40,13 @@
       <%= f.text_field :fish_caught, class: 'form-control' %>
     </div>
     
+    <%= f.label :category, 'カテゴリ' %>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+      <%= category.label do %>
+        <%= category.check_box %>
+        <%= category.text %>
+      <% end %>
+    <% end %>
     <div class="form-group">
       <%= f.submit "釣果を更新する", class: "btn btn-primary" %>
     </div>
