@@ -4,21 +4,26 @@
 <% else %>
   <% @bookmarks.each do |post| %>
     <li class="card">
-      <div class="card-header">
-        <h4><%= link_to "#{post.title}", post_path(post) %></h4>
-      </div>
-      
-      <div class="card-body">
-        <div class="">
-          <%= image_tag post.picture.url if post.picture? %>
+    <div class="card-header">
+      <h4><%= link_to "#{post.title}", post_path(post) %></h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <img src="<%= post.picture.url %>" class="img-fluid">
         </div>
-        
-        <div class="text-right">
-          <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
-          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+        <div class="col-8">
+          <div class="item1">
+          <%= post.detail %>
+          </div>
+          <div class="item2">
+            <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 30 }) %>" alt="">
+            <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted small">投稿日 <%= post.created_at %></span>
+          </div>
         </div>
       </div>
-    </li>
+    </div>
+  </li>
   <% end %>
 <% end %>
         

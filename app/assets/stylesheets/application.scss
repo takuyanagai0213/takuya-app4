@@ -114,3 +114,19 @@ h2 {
 .navbar-nav {
   font-size: 20px
 }
+
+.card-body  {
+  .item1 {
+    text-align: left;
+    // position: absolute;
+    // bottom: 25px;
+    // right: 25px;
+  }
+  .item2 {
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 25px;
+    font-size: 10px;
+  }
+}
