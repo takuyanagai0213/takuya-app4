@@ -53,11 +53,11 @@
       <% end %>
     <% end %>
 
-    <%= f.label :category, 'エリアカテゴリ' %>
-    <%= f.collection_check_boxes(:area_ids, Area.all, :id, :name, include_hidden: false) do |category| %>
-      <%= category.label do %>
-        <%= category.check_box %>
-        <%= category.text %>
+    <%= f.label :area, 'エリアカテゴリ' %>
+    <%= f.collection_check_boxes(:area_ids, Area.all, :id, :name, include_hidden: false) do |area| %>
+      <%= area.label do %>
+        <%= area.check_box %>
+        <%= area.text %>
       <% end %>
     <% end %>
     <%= f.submit '釣果を投稿する', class: 'btn btn-primary btn-block' %>
