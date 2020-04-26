@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :reports, only: [:new, :create]
   resources :picture_details, only: [:index, :new, :create]
   resources :categories, only: [:new, :show, :create]
+  resources :areas, only: [:new, :show, :create]
   resources :bookmarks, only: [:index, :create, :destroy]
 end

@@ -12,28 +12,9 @@
   <div class="panel-heading">
     <h2 class="panel-title">釣果エリア一覧</h2>
   </div>
+  <% @areas.each do |area| %>
 	<div class="panel-body">
-		<%= link_to "北海道", root_path() %>
+		<%= link_to "#{area.name}", area_path(area) %>
 	</div>
-	<div class="panel-body">	
-		<%= link_to "東北", root_path() %>
-	</div>
-	<div class="panel-body">
-		<%= link_to "関東", root_path() %>
-	</div>
-	<div class="panel-body">
-		<%= link_to "中部", root_path() %>
-	</div>
-	<div class="panel-body">
-		<%= link_to "近畿", root_path() %>
-	</div>
-	<div class="panel-body">
-		<%= link_to "中国", root_path() %>
-	</div>
-	<div class="panel-body">	
-		<%= link_to "九州", root_path() %>
-	</div>
-	<div class="panel-body">
-		<%= link_to "沖縄", root_path() %>
-	</div>
+<% end %>
 </div>

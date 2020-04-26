@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   has_many :bookmark, dependent: :destroy
   has_many :post_category_relations, dependent: :destroy
   has_many :categories, through: :post_category_relations
+  has_many :post_category_area_relations, dependent: :destroy
+  has_many :area, through: :post_category_area_relations
   geocoded_by :address, latitude: :latitude, longitude: :longitude
   after_validation :geocode, if: :address_changed?
 

@@ -45,8 +45,16 @@
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
     </div>
     
-    <%= f.label :category, 'カテゴリ' %>
+    <%= f.label :category, '魚種カテゴリ' %>
     <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |category| %>
+      <%= category.label do %>
+        <%= category.check_box %>
+        <%= category.text %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :category, 'エリアカテゴリ' %>
+    <%= f.collection_check_boxes(:area_ids, Area.all, :id, :name, include_hidden: false) do |category| %>
       <%= category.label do %>
         <%= category.check_box %>
         <%= category.text %>

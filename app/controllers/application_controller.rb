@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :category_all
   before_action :information_all
+  before_action :area_all
+
 
   include SessionsHelper
   include UsersHelper
@@ -9,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def category_all
     @categories = Category.all
+  end
+
+  def area_all
+    @areas = Area.all
   end
 
   def information_all
