@@ -15,19 +15,19 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  socket: /var/lib/mysql/mysql.sock
+  #socket: /var/lib/mysql/mysql.sock
   host: db  
 
 development:
   <<: *default
-  database: takuya-app4_development
+  database: fishingshares_db_1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: takuya-app4_test
+  database: fishingshares_db_test_1
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -65,3 +65,4 @@ production:
    username: admin
    password: password
    host: <%= ENV['AWS_RDS_ENDPOINT'] %>
+   socket: /var/lib/mysql/mysql.sock

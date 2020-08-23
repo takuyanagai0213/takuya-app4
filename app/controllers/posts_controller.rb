@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in
-  before_action :correct_user, only: [:edit,:update, :destroy]
+  before_action :require_user_logged_in,  only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
+  def index
+  end
+
   def new
     @post = current_user.posts.build
   end
@@ -8,18 +12,20 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.all
-    @comment = @post.comments.build(user_id: current_user.id)
-    @pictures = @post.picture_details
+    @pictures = @post.picture_details.order(id: :desc)
     results = Geocoder.search(params[:address])
+    @comment = Comment.new
   end
   
   def create
     @post = current_user.posts.build(post_params)
+    @categories = Category.all
     if @post.save
       flash[:success] = '釣果を投稿しました。'
       redirect_to root_url
     else
       @posts = current_user.posts.order(id: :desc).page(params[:page])
+      @categories = Category.all
       flash.now[:danger] = '釣果の投稿に失敗しました。'
       render 'posts/new'
     end
@@ -58,7 +64,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :detail, :picture, :weather, :address, :temperature, :time_zone, :how_to_fish, :fish_caught)
+    params.require(:post).permit(:title, :detail, :picture, :weather, :address, :temperature, :time_zone, :how_to_fish, :fish_caught, category_ids: [], area_ids: [])
   end
   
   def correct_user

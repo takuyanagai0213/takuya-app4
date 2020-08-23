@@ -1,0 +1,56 @@
+
+<h1><%= @post.title %></h1>
+
+<ul class="bxslider">
+    <li><%= image_tag @post.picture.url %></li>
+  <% @pictures.each do |picture| %>
+    <li><%= image_tag picture.image1.url if picture.image1? %></li>
+  <% end %>
+</ul>
+<h3>釣果詳細</h3>
+<table class="table">
+  <tbody>
+    <tr>
+      <th><i class="fas fa-sun"></i>天気</th>
+      <td><%= @post.weather %></td>
+    </tr>
+    <tr>
+      <th><i class="fas fa-temperature-high"></i>気温</th>
+      <td><%= @post.temperature %></td>
+    </tr>
+    <tr>
+      <th><i class="far fa-clock"></i>時間帯</th>
+      <td><%= @post.time_zone %></td>
+    </tr>
+    <tr>
+      <th><i class="fas fa-map-marker-alt"></i>釣れた場所</th>
+      <td><%= @post.address %></td>
+    </tr>
+    <tr>
+      <th><i class="fas fa-male"></i>釣り方</th>
+      <td><%= @post.how_to_fish %></td>
+    </tr>
+    <tr>
+      <th><i class="fas fa-fish"></i>釣れた魚</th>
+      <td><%= @post.fish_caught %></td>
+    </tr>
+    <tr>
+      <th><i class="fas fa-file-alt"></i>釣行レポート</th>
+      <td><%= @post.detail %></td>
+    </tr>
+  </tbody>
+</table>
+<div class="map">
+  <h3>釣行場所</h3>
+  <div id="map">
+  </div>
+  <script>
+  function initMap(){
+    let map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+    zoom: 15
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+</div>

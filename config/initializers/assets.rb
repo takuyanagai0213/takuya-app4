@@ -12,3 +12,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( jquery.japan-map.min.js )
+Rails.application.config.assets.precompile += %w( weather.js )
+Rails.application.config.assets.precompile += %w( slider.js )
+Rails.application.config.assets.precompile += %w( Hello.js )
+# Rails.application.config.assets.precompile += %w( map.js )

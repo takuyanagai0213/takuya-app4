@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reports/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'toppages#index'
 
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   
+  resources :reports, only: [:new, :create]
   resources :picture_details, only: [:index, :new, :create]
-  
+  resources :categories, only: [:new, :show, :create]
+  resources :areas, only: [:new, :show, :create]
   resources :bookmarks, only: [:index, :create, :destroy]
 end

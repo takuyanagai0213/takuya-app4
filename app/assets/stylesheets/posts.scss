@@ -2,7 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#map{
-  height: 300px;
-  width: 400px;
+#map {
+  height: 400px;
+  width: 700px;
+}
+
+.fa-hand-point-right {
+  font-size: 30px;
+}
+
+.fa-sun {
+  font-size: 20px;
+  margin: 2px;
+}
+.fa-temperature-high {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.fa-clock {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.fa-map-marker-alt {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.fa-male {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.fa-fish {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.fa-file-alt {
+  font-size: 20px;
+  margin: 2px;
+}
+
+th {
+  margin: 5px;
 }

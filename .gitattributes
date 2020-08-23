@@ -1,0 +1,3 @@
+
+*.rb linguist-language=Ruby
+fishingshares/db/mysql_data/* linguist-documentation

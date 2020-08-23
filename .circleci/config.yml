@@ -1,15 +1,93 @@
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
-
+version: 2
 jobs:
   build:
+    working_directory: ~/circleci-demo-ruby-rails
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: default
+      - image: circleci/ruby:2.5.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          DBHOST: 127.0.0.1
+          username: root
+          password: password
+      - image: circleci/mysql:5.7
+        environment:
+          username: root
+          database: fishingshares_db_test_1
+
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: bundlerをinstall
+          command: |
+            gem update --system
+            gem install bundler
+      - run:
+          name: bundle installを実行
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+
+      - run:
+          name: mysqlをinstall
+          command: sudo apt install -y mysql-client || true
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+      - run:
+          name: Yarn をinstall
+          command: yarn install --cache-folder ~/.cache/yarn
+      - run: mv config/database.yml.ci config/database.yml
+      
+      - run:
+          name: データベースセットアップ
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:migrate
+            bundle exec rake db:schema:load
+      - run:
+          name: RSpecを実行
+          command: bundle exec rspec
+      - store_test_results:
+          path: /tmp/test-results
+
+  # deploy: #デプロイするジョブ
+  #   working_directory: ~/my-app
+  #   docker:
+  #   - image: ruby:2.5.3
+  #   steps:
+  #     - checkout
+  #     - run: bundle install --path vendor/bundle
+  #     - run: bundle exec rake deploy
+
+    # EC2にSSH接続し、デプロイを実行
+  # deploy:
+  #   machine:
+  #     image: circleci/classic:edge
+  #   steps:
+  #     - checkout
+  #     # CircleCIに登録した秘密鍵を呼び出す。
+  #     - add_ssh_keys:
+  #        fingerprints:
+  #         - "6e:d4:25:40:1a:4b:5f:39:d7:27:3d:ea:e0:a5:00:23"
+  #     - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/rails/takuya-app4 && git pull origin master'
+
+# テストが成功した場合のみ、デプロイを実行
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+            # masterブランチがpushされた場合のみデプロイを実行する.
+          filters:
+            branches:
+              only: master

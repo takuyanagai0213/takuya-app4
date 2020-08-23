@@ -1,0 +1,12 @@
+<% if logged_in? %>
+  <div class="text-right m-3">
+    <%= render 'bookmarks/bookmarks_button', post: @post %>
+  </div>
+<% else %>
+  <div class="text-right m-3">
+    <p>ここでブックマークができるよ！</p><i class="far fa-hand-point-right"></i>
+    <%= link_to login_path do %>
+      <i class="far fa-star"></i>
+    <% end %>
+  </div>
+<% end %>

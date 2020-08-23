@@ -6,11 +6,10 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  has_many :posts
-  has_many :comments 
-  has_many :picture_details
-  
-  has_many :bookmarks
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :picture_details, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :addbookmark, through: :bookmarks, source: :post
   has_many :reverses_of_bookmark, class_name: 'Bookmark', foreign_key: 'user_id'
   has_many :bookmarker, through: :reverses_of_bookmark, source: :user

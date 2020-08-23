@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      picture_detail: 詳細画像
+    attributes:
+      picture_detail:
+        image1: 詳細画像
+    models:
+      post: 詳細画像
+    attributes:
+      post:
+        title: タイトル
+        detail: 釣行レポート
+        picture: タイトル画像
+    models:
+      user: ユーザ
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード

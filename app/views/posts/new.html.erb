@@ -44,9 +44,25 @@
       <%= f.label :picture, 'タイトル画像' %>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
     </div>
+    
+    <%= f.label :category, '魚種カテゴリ' %>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |category| %>
+      <%= category.label do %>
+        <%= category.check_box %>
+        <%= category.text %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :area, 'エリアカテゴリ' %>
+    <%= f.collection_check_boxes(:area_ids, Area.all, :id, :name, include_hidden: false) do |area| %>
+      <%= area.label do %>
+        <%= area.check_box %>
+        <%= area.text %>
+      <% end %>
+    <% end %>
     <%= f.submit '釣果を投稿する', class: 'btn btn-primary btn-block' %>
   <% end %>
-  
+        
   <script type="text/javascript">
     $('#post_picture').bind('change', function() {
       var size_in_megabytes = this.files[0].size/1024/1024;

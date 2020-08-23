@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+   background-color: rgb(253, 253, 253);
+ }
+
+.btn-outline-success {
+  margin: 20px;
+}
+
+.panel-primary {
+  background-color: rgb(216, 238, 238);
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold 3px rgb(224, 201, 201);
+  border: solid 3px rgb(182, 208, 224);
+}
+.panel-heading {
+  background-color: blue($color: #ddc1c1);
+}
+
+.panel-title {
+  background-color: blue($color: #4e1515);
+}
+
+.panel-body {
+  margin: 5px;
+  font-size: 17px;
+}
+
+h2 {
+  background-color: rgb(235, 235, 152);
+  margin: 5px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.panel-primary1 {
+  background-color: rgb(216, 238, 238);
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: bold 3px rgb(224, 201, 201);
+  border: solid 3px rgb(182, 208, 224);
+}
+.panel-primary-left {
+  margin: 5px;
+}
+
+.toppage_top {
+  border-bottom: 1px solid black;
+  margin: 10px;
+}
+
+.card {
+  margin: 6px;
+}
+
+.page-footer {
+  background-color: #e3f2fd;
+}
+
+.city-name {
+  h3 {
+    background-color: rgb(232, 241, 222);
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px;
+    padding: 3px;
+  }
+}
+.weather-report {
+    font-size: 12px;
+    margin: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgb(149, 200, 207);
+}
+
+.right-sidebar {
+  // border: solid 3px rgb(182, 208, 224);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(149, 200, 207);
+
+}
+
+.navbar {
+  background-color: #b4e5f8;
+  
+  .fa-fish{
+    font-size: 60px
+  }
+}
+
+.navbar-brand {
+  font-size: 40px
+}
+
+
+.navbar-nav {
+  font-size: 20px
+}
+
+.card-body  {
+  .item1 {
+    text-align: left;
+    // position: absolute;
+    // bottom: 25px;
+    // right: 25px;
+  }
+  .item2 {
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 25px;
+    font-size: 10px;
+  }
+}
