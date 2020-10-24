@@ -554,7 +554,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   mini_magick (= 4.9.4)
-  mysql2 (>= 0.4.4, < 0.6.0)
+  mysql2 (>= 0.5.3, < 0.6.0)
   omniauth-google-oauth2
   puma (~> 3.12)
   rails (~> 5.2.4, >= 5.2.4.1)
@@ -575,7 +575,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.7.0p0
 
 BUNDLED WITH
    1.17.3
