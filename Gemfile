@@ -5,6 +5,7 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+# gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # gem 'bootstrap-sass', '3.3.'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.5.3', '< 0.6.0'
@@ -49,7 +50,7 @@ group :development, :test do
   gem 'bcrypt_pbkdf'
   # gem 'factory_bot_rails'
   # gem 'database_cleaner'
-  gem 'rubocop', '~> 0.55.0', require: false
+  # gem 'rubocop', '~> 0.55.0', require: false
 end
 
 group :development do
@@ -84,13 +85,13 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-gem 'rails-i18n'
+# gem 'rails-i18n'
 gem 'dotenv-rails'
-gem 'gmaps4rails'
+# gem 'gmaps4rails'
 gem 'geocoder'
 gem 'omniauth-google-oauth2'
-gem 'therubyracer'
-gem 'react-rails'
-gem 'webpacker'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+# gem 'therubyracer'
+# gem 'react-rails'
+# gem 'webpacker'
+# gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 # gem 'jcanvas-rails', '~> 0.1.0'
