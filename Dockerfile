@@ -15,6 +15,9 @@ COPY . /fishingshares
 ENV LANG="ja_JP.UTF-8" \
     TZ="Asia/Tokyo" \
     APP_HOME="/fishingshares"
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 WORKDIR $APP_HOME
 RUN bundle install
 ADD . $APP_HOME
