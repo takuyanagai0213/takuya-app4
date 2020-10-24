@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1>テストユーザログイン</h1>
   <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-    <%= f.hidden_field :email, value: 'osakana@example.com' %>
+    <%= f.hidden_field :email, value: 'test@example.com' %>
     <%= f.hidden_field :password, value: 'testpass' %>
     <%= f.submit 'テストログイン', class: 'btn btn-outline-success' %>
   <% end %>

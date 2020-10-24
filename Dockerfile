@@ -16,10 +16,8 @@ ENV LANG="ja_JP.UTF-8" \
     TZ="Asia/Tokyo" \
     APP_HOME="/fishingshares"
 WORKDIR $APP_HOME
-RUN bundle update --bundler
 RUN gem install bundler:1.17.3
 RUN bundle install
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-CMD ["/usr/bin/entrypoint.sh"]
+
 ADD . $APP_HOME
+CMD ["./entrypoint.sh"]

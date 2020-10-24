@@ -11,7 +11,7 @@ User.create!(name:  "管理ユーザ",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
-             
+
 User.create!(name:  "testman",
              email: "test@example.com",
              password:              "testpass",
@@ -27,3 +27,8 @@ User.create!(name:  "testman",
     i += 1
 end
 
+User.create!(name:  "おさかなくん",
+             email: "osakana@example.com",
+             password:              "testpass",
+             password_confirmation: "testpass",
+             admin: false)
