@@ -75,7 +75,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave',             '1.3.2'
 gem 'mini_magick',             '4.9.4'
 
 group :production do
